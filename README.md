@@ -14,3 +14,7 @@
 
 1) in terminal, type => git add -A
 2) in terminal, type => git commit -m "first commit"
+3) in terminal, type => git push
+
+# Best practices for git commands
+1) run git commands every five minutes to ensure your work is saved
