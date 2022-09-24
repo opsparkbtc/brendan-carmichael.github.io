@@ -15,7 +15,7 @@ function triangles() {
 ////////////////////////////////////////////////////////////////////////////////
 
 function fizzBuzz() {
-  for (i = 1; i <= 100; i++) {
+  for (let i = 1; i <= 100; i++) {
   if (i % 3 === 0 && i % 5 === 0) {
     console.log('FizzBuzz');
   } else if (i % 3 === 0) {
@@ -33,8 +33,13 @@ function fizzBuzz() {
 ////////////////////////////////////////////////////////////////////////////////
 
 function drawChessboard() {
-
+  let bindingSize = 8;
+  for (let i = 0; i < (bindingSize / 2); i++) {
+  for (let j = 0; j < (bindingSize / 2); i++) {
+  console.log(' # # # #\n# # # # ');
 }
+}
+};
 
 ////////////////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
