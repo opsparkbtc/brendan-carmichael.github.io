@@ -14,7 +14,9 @@
  */
 function length(string) {
     // YOUR CODE BELOW HERE //
-    
+    //return the length of the string that was inputted
+    let returnLength = string.length;
+    return returnLength;
 
 
     // YOUR CODE ABOVE HERE //
@@ -25,6 +27,8 @@ function length(string) {
  */
 function toLowerCase(string) {
     // YOUR CODE BELOW HERE //
+    //returning a string modified with toLowerCase
+    return string.toLowerCase();
 
 
 
@@ -36,7 +40,8 @@ function toLowerCase(string) {
  */
 function toUpperCase(string) {
     // YOUR CODE BELOW HERE //
-
+    //returned a string modified with toUpperCase method
+    return string.toUpperCase()
 
 
     // YOUR CODE ABOVE HERE //
@@ -57,7 +62,14 @@ function toUpperCase(string) {
  */
 function toDashCase(string) {
     // YOUR CODE BELOW HERE //
-
+    //Taking an input string and returning it lowercased with dashes instead of spaces
+    //making string lowercase:
+    let lowerString = string.toLowerCase();
+    //splitting string into array so that it can be joined with dashes replacing spaces
+    let splitString = lowerString.split(' ');
+    //Now that string is an array, will join elements with dash as substitute for spaces
+    let dashedString = splitString.join('-')
+    return dashedString;
 
 
     // YOUR CODE ABOVE HERE //
@@ -75,8 +87,20 @@ function toDashCase(string) {
  * TIP: How can you use Array access to your advantage here? How can you
  *      ensure uppercase and lowercase can be compared equally?
  */
+
 function beginsWith(string, char) {
     // YOUR CODE BELOW HERE //
+    //Converting string to Array and then checking value of array's first index
+    let lowered = string.toLowerCase();
+    //Splitting string
+    let holdArray = lowered.split('');
+    //check with 'if' statements
+    if (holdArray[0] === char.toLowerCase()) {
+        return true;
+    } else {
+        return false;
+    }
+    
 
     
 
@@ -97,7 +121,20 @@ function beginsWith(string, char) {
  */
 function endsWith(string, char) {
     // YOUR CODE BELOW HERE //
-
+// YOUR CODE BELOW HERE //
+    //Converting string to Array and then checking value of array's last index
+    //Getting string's last index value
+    let lengthIndex = string.length - 1; 
+    //Lowercasing string to ensure case insensitivity
+    let lowered = string.toLowerCase();
+    //Splitting string
+    let holdArray = lowered.split('');
+    //check with 'if' statements
+    if (holdArray[lengthIndex] === char.toLowerCase()) {
+        return true;
+    } else {
+        return false;
+    }
 
 
     // YOUR CODE ABOVE HERE //
@@ -110,7 +147,10 @@ function endsWith(string, char) {
  */
 function concat(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
+    //Creating new variable to hold two concatenated strings
+    let concatString = stringOne + stringTwo;
+    //returning variable for concated strings
+    return concatString;
 
 
     // YOUR CODE ABOVE HERE //
@@ -129,7 +169,10 @@ function concat(stringOne, stringTwo) {
 function join(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
     var args = Array.from(arguments);
-
+    //joining args array to create string
+    let joinedVar = args.join('')
+    //returning string
+    return joinedVar;
 
     // YOUR CODE ABOVE HERE //
 }
@@ -145,7 +188,12 @@ function join(stringOne, stringTwo) {
  */
 function longest(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
+    //using .length property to check string
+    if (stringOne.length > stringTwo.length) {
+        return stringOne;
+    } else {
+        return stringTwo;
+    }
 
 
     // YOUR CODE ABOVE HERE //
