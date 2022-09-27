@@ -13,7 +13,10 @@
  */
 function createGreaterThanFilter(base) {
     // YOUR CODE BELOW HERE //
-    
+    //returning a function that takes in an input (thing) and returns the boolean value of thing > base
+    let greaterFilter = (thing) => (thing > base);
+    return greaterFilter
+
     
     
     
@@ -27,7 +30,8 @@ function createGreaterThanFilter(base) {
  */
 function createLessThanFilter(base) {
     // YOUR CODE BELOW HERE //
-    
+    //returning a function that takes in an input (thing) and returns the boolean value of thing < base. 
+    return (thing) => (thing < base)
     
     
     
@@ -41,6 +45,8 @@ function createLessThanFilter(base) {
  */
 function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
+    let startChecker = (firstCharacter) => (firstCharacter[0].toLowerCase === startsWith.toLowerCase)
+    return startChecker;
     
     
     
@@ -55,7 +61,8 @@ function createStartsWithFilter(startsWith) {
  */
 function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
-    
+    let endChecker = (firstCharacter) => (firstCharacter[firstCharacter.length - 1]=== endsWith)
+    return endChecker;
     
     
     
