@@ -78,7 +78,10 @@ function createEndsWithFilter(endsWith) {
  */
 function modifyStrings(strings, modify) {
     // YOUR CODE BELOW HERE //
-    
+    let modified = [];
+    for (let i = 0; i < strings.length; i++)
+      modified.push(modify(strings[i]))
+      return modified;
     
     
     
@@ -96,6 +99,17 @@ function modifyStrings(strings, modify) {
  */
 function allStringsPass(strings, test) {
     // YOUR CODE BELOW HERE //
+    //Going to loop through and modify a variable if any of strings[i] don't pass, then return the variable.
+    let falseFlagger = 0;
+    for (let i = 0; i < strings.length; i++) {
+      if (test(strings[i]) === false) {
+        falseFlagger += 1;
+      }
+    } if (falseFlagger === 0) {
+        return true;
+    } else {
+        return false}
+    
     
     
     
