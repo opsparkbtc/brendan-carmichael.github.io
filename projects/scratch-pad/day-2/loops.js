@@ -12,8 +12,10 @@
  */
 function printArrayValues(array) {
   // YOUR CODE BELOW HERE //
-  
-  
+  //looping and logging each element
+  for (let i = 0; i < array.length; i++) {
+  console.log(array[i]);
+  }
   
   
   // YOUR CODE ABOVE HERE //
@@ -25,7 +27,10 @@ function printArrayValues(array) {
  */
 function printArrayValuesInReverse(array) {
   // YOUR CODE BELOW HERE //
-  
+  //looping backwards and logging each element
+  for (let i = array.length - 1; i >= 0; i--) {
+    console.log(array[i]);
+    }
   
   
   
@@ -37,6 +42,10 @@ function printArrayValuesInReverse(array) {
  */
 function getObjectKeys(object) {
   // YOUR CODE BELOW HERE //
+  //Using Object.keys method to make an array of the keys
+  let arrayOfKeys = Object.keys(object);
+  //Returning the array
+  return arrayOfKeys;
   
   
   
@@ -50,7 +59,13 @@ function getObjectKeys(object) {
  */
 function printObjectKeys(object) {
   // YOUR CODE BELOW HERE //
-  
+  //Using Object.keys method to create array
+  let arrayOfKeys = Object.keys(object)
+  //looping through array
+  for (let i = 0; i < arrayOfKeys.length; i++) {
+  //logging array elements  
+    console.log(arrayOfKeys[i])
+  }
   
   
   
@@ -62,7 +77,15 @@ function printObjectKeys(object) {
  */
 function getObjectValues(object) {
   // YOUR CODE BELOW HERE //
-  
+  //Creating array and looping through object to append array  
+  let landingArray = []
+    for (var i in object) {
+      if (object.hasOwnProperty(i)) {
+      landingArray.push(object[i])
+    }
+    }
+    //returning Array with object values appended to it
+    return landingArray;
   
   
   
@@ -75,7 +98,13 @@ function getObjectValues(object) {
  */
 function printObjectValues(object) {
   // YOUR CODE BELOW HERE //
-  
+  //Looping through object and printing the values  
+  for (var i in object) {
+      if (object.hasOwnProperty(i)) {
+      console.log(object[i])
+    }
+    }
+    
   
   
   
@@ -87,7 +116,12 @@ function printObjectValues(object) {
  */
 function getObjectLength(object) {
   // YOUR CODE BELOW HERE //
-  
+  //Using .entries method to create array of key/value pairs
+  let arrayOfElements = Object.entries(object)
+  //Creating new variable bound to length of arrayOfElements
+  let objectLength = arrayOfElements.length();
+  //returning the number of key/value pairs
+  return objectLength
   
   
   

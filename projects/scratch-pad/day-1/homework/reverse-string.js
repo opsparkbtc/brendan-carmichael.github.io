@@ -21,10 +21,14 @@
 
 function reverseString(input) {
     // YOUR CODE GOES BELOW HERE //
-    
-    
-    
-    
+    //creating a variable...
+    var reversed = '';
+    //looping through the input backwards...  
+    for (var i = input.length - 1; i > -1; i--) {
+    //adding string characters to variable in reverse order
+      reversed = reversed + input[i];
+}
+  return reversed;
     // YOUR CODE GOES ABOVE HERE //
 }
 

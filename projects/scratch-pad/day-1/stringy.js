@@ -208,12 +208,22 @@ function longest(stringOne, stringTwo) {
  */
 function sortAscending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
-
-
+    //setting a variable and then using localeCompare. Placing results in a variable for clarity.
+    let final = 0;
+    //Comparing using the localeCompare method
+    let comparisonResult = stringOne.localeCompare(stringTwo);
+    //The results need to be reversed. Requested output is opposite the output of localeCompare method.
+    if (comparisonResult === -1) {
+        final = 1;
+    } else if (comparisonResult === 1) {
+        final = -1
+    } else {
+        final = 0
+    }
+    //returning result
+    return final;
     // YOUR CODE ABOVE HERE //
-}
-
+};
 
 /**
  * Given two Strings, return 1 if the first is lower in alphabetical order than
@@ -224,10 +234,19 @@ function sortAscending(stringOne, stringTwo) {
  */
 function sortDescending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
-
-
-
+    //creating variable to store output
+    let final = 0;
+    //calling method
+    let comparisonResult = stringOne.localeCompare(stringTwo);
+    if (comparisonResult === -1) {
+        final = -1;
+    } else if (comparisonResult === 1) {
+        final = 1
+    } else {
+        final = 0
+    }
+    //returning variable
+    return final;
     // YOUR CODE ABOVE HERE //
 }
 
