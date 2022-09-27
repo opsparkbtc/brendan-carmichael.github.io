@@ -45,7 +45,7 @@ function createLessThanFilter(base) {
  */
 function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
-    let startChecker = (firstCharacter) => (firstCharacter[0].toLowerCase === startsWith.toLowerCase)
+    let startChecker = (firstCharacter) => (firstCharacter[0] === startsWith)
     return startChecker;
     
     
