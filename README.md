@@ -10,7 +10,7 @@
 7) in terminal, type => npm install -g opspark
 8) in terminal, type => os install
 
-# How to run Git commands:g
+# How to run Git commands:
 1) in terminal, type => git add -A
 2) in terminal, type => git commit -m "first commit"
 3) in terminal, type => git push

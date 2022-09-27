@@ -23,7 +23,24 @@
  */
 function range(start, end) {
     // YOUR CODE GOES BELOW HERE //
-    
+    let arrayHolder = [];
+    let holderVar = 0;
+    if (start < end) {
+        for (let i = start; i <= end; i++) {
+        holderVar = i;
+        arrayHolder.push(holderVar);
+        }
+      return arrayHolder;
+  } else if (start > end) {
+        for (let i = start; i >= end; i--) {
+        holderVar = i
+        arrayHolder.push(holderVar);
+        }
+      return arrayHolder;
+    } else {
+    console.log('Both numbers are equal!')
+    }
+ 
     
     
     
