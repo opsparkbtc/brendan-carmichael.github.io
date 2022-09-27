@@ -119,7 +119,7 @@ function getObjectLength(object) {
   //Using .entries method to create array of key/value pairs
   let arrayOfElements = Object.entries(object)
   //Creating new variable bound to length of arrayOfElements
-  let objectLength = arrayOfElements.length();
+  let objectLength = arrayOfElements.length;
   //returning the number of key/value pairs
   return objectLength
   
@@ -134,7 +134,13 @@ function getObjectLength(object) {
  */
 function printObjectValuesInReverse(object) {
   // YOUR CODE BELOW HERE //
-  
+  //Using Object.kvalues method to create array
+  let arrayOfValues = Object.values(object)
+  //looping through array
+  for (let i = arrayOfValues.length - 1; i >= 0; i--) {
+  //logging array elements  
+    console.log(arrayOfValues[i])
+  }
   
   
   
