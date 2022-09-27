@@ -61,7 +61,7 @@ function createStartsWithFilter(startsWith) {
  */
 function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
-    let endChecker = (firstCharacter) => (firstCharacter[firstCharacter.length - 1]=== endsWith)
+    let endChecker = (firstCharacter) => (firstCharacter[firstCharacter.length - 1] === endsWith)
     return endChecker;
     
     

@@ -89,9 +89,19 @@ function isCollection(value) {
  */ 
 function typeOf(value) {
     // YOUR CODE BELOW HERE //
+    //Setting a return value, then using typeof to get type.
+    //Specifying 'object' datatype for Array, Date, and null.
+    let returnVar = 0
     let typeVar = (typeof value);
-    let newVar = typeVar.toString()
-    return Var;
+    if (Array.isArray(value) === true) {
+        returnVar = 'array'
+    } else if (value instanceof Date === true) {
+        returnVar = 'date'
+    } else if (value === null) {
+        returnVar = 'null'
+    } else {
+        returnVar = typeVar
+    } return returnVar;
     
     
     
