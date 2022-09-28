@@ -45,8 +45,8 @@ function createLessThanFilter(base) {
  */
 function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
-    let startChecker = (firstCharacter) => (firstCharacter[0] === startsWith)
-    return startChecker;
+    return (stringToCheck) => (stringToCheck[0].toLowerCase() === startsWith.toLowerCase())
+   
     
     
     
@@ -61,7 +61,7 @@ function createStartsWithFilter(startsWith) {
  */
 function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
-    let endChecker = (firstCharacter) => (firstCharacter[firstCharacter.length - 1] === endsWith)
+    let endChecker = (stringToCheck) => (stringToCheck[stringToCheck.length - 1].toLowerCase() === endsWith.toLowerCase())
     return endChecker;
     
     
