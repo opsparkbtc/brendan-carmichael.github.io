@@ -46,13 +46,31 @@ function makeContactList() {
     /*
      * You need something here to hold contacts. See length api for a hint:
      */
-    var contacts;
+    var contactArray =[];
+    
     
     return {
         // we implemented the length api for you //
         length: function() {
-            return contacts.length;
+            return contactArray.length;
         }
+        addContact: function(contact) {
+            return contactArray.push(contact);
+        }
+        findContact: function(fullName) {
+            for (let i = 0; i < contactArray.length; i++)
+              if (contactArray[i].nameFirst + ' ' + contactArray[i].nameLast === fullName) {
+                return contactArray[i]
+              } 
+        }
+        removeContact: function(contact) {
+            //loop through contactArray and match it, then find a way to delete it. Be careful of simultaneous iteration/modify
+        }
+        printAllContactNames: function() {
+            for (let i = 0; i < contactArray.length; i++)
+              console.log(contactArray[i].nameFirst + ' ' + contactArray[i]) 
+        }   
+        
     }
 }
 
