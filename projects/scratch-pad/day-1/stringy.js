@@ -214,9 +214,9 @@ function sortAscending(stringOne, stringTwo) {
     let comparisonResult = stringOne.localeCompare(stringTwo);
     //The results need to be reversed. Requested output is opposite the output of localeCompare method.
     if (comparisonResult === -1) {
-        final = 1;
+        final = -1;
     } else if (comparisonResult === 1) {
-        final = -1
+        final = 1
     } else {
         final = 0
     }
@@ -239,9 +239,9 @@ function sortDescending(stringOne, stringTwo) {
     //calling method
     let comparisonResult = stringOne.localeCompare(stringTwo);
     if (comparisonResult === -1) {
-        final = -1;
+        final = 1;
     } else if (comparisonResult === 1) {
-        final = 1
+        final = -1
     } else {
         final = 0
     }
