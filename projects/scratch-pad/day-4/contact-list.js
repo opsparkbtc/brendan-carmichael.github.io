@@ -73,8 +73,12 @@ function makeContactList() {
         },
         //Need to deal with the newline characters
         printAllContactNames: function() {
+            let holdingArray = []
             for (let i = 0; i < contactArray.length ; i++)
-              return contactArray[i].nameFirst + ' ' + contactArray[i] + '\n' 
+              holdingArray.push(contactArray[i].nameFirst + ' ' + contactArray[i].nameLast + '\n')
+            let joinedString = holdingArray.join('')
+            let finalString = joinedString.slice(0, joinedString.length - 1)
+            return finalString
         }   
         
     }
