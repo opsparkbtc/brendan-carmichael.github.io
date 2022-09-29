@@ -53,22 +53,28 @@ function makeContactList() {
         // we implemented the length api for you //
         length: function() {
             return contactArray.length;
-        }
+        },
         addContact: function(contact) {
             return contactArray.push(contact);
-        }
+        },
         findContact: function(fullName) {
             for (let i = 0; i < contactArray.length; i++)
               if (contactArray[i].nameFirst + ' ' + contactArray[i].nameLast === fullName) {
                 return contactArray[i]
               } 
-        }
+        },
         removeContact: function(contact) {
             //loop through contactArray and match it, then find a way to delete it. Be careful of simultaneous iteration/modify
-        }
+            for (let i = 0; i < contactArray.length; i++) {
+                if (contactArray[i] === contact) {
+                    return contactArray.splice(i, 1)
+                }
+            }
+        },
+        //Need to deal with the newline characters
         printAllContactNames: function() {
-            for (let i = 0; i < contactArray.length; i++)
-              console.log(contactArray[i].nameFirst + ' ' + contactArray[i]) 
+            for (let i = 0; i < contactArray.length ; i++)
+              return contactArray[i].nameFirst + ' ' + contactArray[i] + '\n' 
         }   
         
     }
