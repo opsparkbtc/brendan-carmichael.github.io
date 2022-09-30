@@ -79,8 +79,8 @@ Cheeser('Garfield') //This prints 'Say Cheese, Garfield!' to the console. Hopefu
 
 //7. undefined
 //If we try to make javascript access something which has no value, we get 'undefined'.
-var x;
-console.log(x) //Returns undefined, since we have not assigned 'x' any value yet.
+var abc;
+console.log(abc) //Returns undefined, since we have not assigned 'x' any value yet.
 
 
 //8. null
