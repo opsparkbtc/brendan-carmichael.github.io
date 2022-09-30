@@ -36,7 +36,7 @@ console.log(declaration)
 //To initialize and declare a variable, we can also use "let" or "const" instead of "var". We can also
 // declare and assign at the same time by placing an equals sign and the value immedietly after the declaratio.
 //a "const" or constant must be initialized this way.
-Let letVar = 'Example!'
+let letVar = 'Example!'
 const constVar = 'Another example!';
 
 //2.2 Let
