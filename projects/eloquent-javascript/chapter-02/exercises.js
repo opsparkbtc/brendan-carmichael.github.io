@@ -32,13 +32,19 @@ function fizzBuzz() {
 // drawChessboard //////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function drawChessboard() {
-  let bindingSize = 8;
-  for (let i = 0; i < (bindingSize / 2); i++) {
-  for (let j = 0; j < (bindingSize / 2); i++) {
-  console.log(' # # # #\n# # # # ');
+function drawChessboard(size) {
+  let boardString = ''
+  for (let i = 0; i < size; i++) {
+  for (let j = 0; j < size; j++) {
+    if ((i + j) % 2 === 0) {
+      boardString += ' ';
+} else {
+      boardString += '#'
 }
 }
+boardString += '\n'    
+}
+console.log(boardString);
 };
 
 ////////////////////////////////////////////////////////////////////////////////
