@@ -55,7 +55,19 @@ function remove(animals, name) {
 //////////////////////////////////////////////////////////////////////
 // Step 4 - Add ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
+function add(animals, animal) {
+    let nameChecker = 0
+    for (let i = 0; i < animals.length; i++) {
+        if (animals[i].name === animal.name) {
+            nameChecker += 1
+        }
+    }
+    
+    if (animal.name.length > 0 && animal.species.length > 0 && nameChecker < 1) {
+        animals.push(animal)
 
+    }
+}
 
 
 /**
