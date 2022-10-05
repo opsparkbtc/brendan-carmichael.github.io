@@ -4,24 +4,22 @@
 
 function range(start, end, step = 1) {
   let arrayHolder = [];
-  let holderVar = 0;
-  let incVar = step
-  if (start < end) {
-      for (let i = start; i <= end; i += incVar ) {
-      holderVar = i;
-      arrayHolder.push(holderVar);
+  if (start > end && step >= 1) {
+      for (let i = end; i <= start; i += step) {
+      arrayHolder.push(i);
       }
-    return arrayHolder;
-} else if (start > end) {
-      for (let i = start; i >= end; i -= incVar) {
-      holderVar = i
-      arrayHolder.push(holderVar);
-      }
-    return arrayHolder;
-  } else {
-  return arrayHolder;
-  }
+} else if (start < end && step >= 1) {  
+    for (let i = start; i <= end; i += step) {
+      arrayHolder.push(i);
 }
+} else if (start > end && step <= 1) {
+      for (let i = start; i >= end; i += step) {
+      arrayHolder.push(i);
+      }
+  }  
+return arrayHolder
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // sum /////////////////////////////////////////////////////////////////////////
@@ -46,21 +44,24 @@ function reverseArray(array) {
   return reversed;
 }
 
+
 ////////////////////////////////////////////////////////////////////////////////
 // reverseArrayInPlace /////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
 function reverseArrayInPlace(array) {
   let lengthVar = array.length
+  let x = lengthVar
   let holder = []
   for (i = lengthVar - 1; i >= 0; i--) {
     holder.push(array[i]);
   } for (i = 0; i < lengthVar; i++) {
     array.pop(array[i])
-  } for (i = 0; i < lengthVar; i++) {
+  } for (i = 0; i < x; i++) {
     array.push(holder[i])
 } return array;
 }
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // arrayToList /////////////////////////////////////////////////////////////////
