@@ -89,7 +89,7 @@ function getRandom(inputArray) {
 }
    
 friends.push(animals[randomPusher(animals)].name)
-animals[1].friends = friends;
+animals[0].friends = friends;
 
 
 
