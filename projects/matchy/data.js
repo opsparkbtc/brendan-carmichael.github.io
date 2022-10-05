@@ -82,13 +82,15 @@ console.log(animals.length)
 //I chose an array to hold the animal's friends.
 var friends = [];
 function getRandom(inputArray) {
-  var minVar = 0;
+   newArray = []
   var maxVar = (inputArray.length)
   var randomIndex = (Math.floor(Math.random() * maxVar)) 
   return randomIndex
 }
    
-friends.push(animals[randomPusher(animals)].name)
+var newFriend = (animals[getRandom(animals)].name)
+friends.push(newFriend)
+console.log(friends)
 animals[0].friends = friends;
 
 
