@@ -73,15 +73,18 @@ function capitalizeAllWords(string) {
 //////////////////////////////////////////////////////////////////////
 
 function welcomeMessage(object) {
+  let message = "Welcome " + capitalizeWord(object.name) + "!"
+  return message
+  }
 
-}
 
 //////////////////////////////////////////////////////////////////////
 // Function 8 - Profile Info /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
 function profileInfo(object) {
-
+  let message = capitalizeWord(object.name) + ' is a ' + capitalizeWord(object.species)
+  return message
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -89,7 +92,13 @@ function profileInfo(object) {
 //////////////////////////////////////////////////////////////////////
 
 function maybeNoises(object) {
-
+  if (object.hasOwnProperty('noises') && Array.isArray(object.noises) === true && (object.noises.length > 0)) {
+    return object.noises.join(' ');
+  } else if (object.hasOwnProperty('noises') && Array.isArray(object.noises) === false) {
+    return object.noises;
+  } else {
+    return 'there are no noises'
+  }
 }
 
 //////////////////////////////////////////////////////////////////////
