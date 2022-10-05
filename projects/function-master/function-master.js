@@ -3,7 +3,7 @@
 //////////////////////////////////////////////////////////////////////
 
 function objectValues(object) {
-
+   return Object.values(object)
 } 
 
 //////////////////////////////////////////////////////////////////////
@@ -11,7 +11,9 @@ function objectValues(object) {
 //////////////////////////////////////////////////////////////////////
 
 function keysToString(object) {
-
+let x = Object.keys(object)
+x = x.join(" ")
+return x;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -19,7 +21,15 @@ function keysToString(object) {
 //////////////////////////////////////////////////////////////////////
 
 function valuesToString(object) {
-    
+    let array = []
+    let x = Object.values(object)
+    for (let i = 0; i < x.length; i++) {
+    if (typeof x[i] === 'string') {
+      array.push(x[i])
+   }
+}
+let returnString = array.join(' ');
+return returnString
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -27,7 +37,12 @@ function valuesToString(object) {
 //////////////////////////////////////////////////////////////////////
 
 function arrayOrObject(collection) {
-    
+    if (Array.isArray(collection) === true) {
+        return 'array'
+    } else if (typeof collection === 'object') {
+        return 'object'
+    }
+
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -35,16 +50,23 @@ function arrayOrObject(collection) {
 //////////////////////////////////////////////////////////////////////
 
 function capitalizeWord(string) {
-    
-}
+    let slicey = string.slice(1, string.length)  
+    return string[0].toUpperCase() + slicey
+  }
 
 //////////////////////////////////////////////////////////////////////
 // Function 6 - Capitalize All Words /////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-function capitalizeAllWords(string) {
-    
-}
+function capitalizeAllWords(string) { 
+    let holdArray = []
+    let stringArray = string.split(' ')
+      for (i = 0; i < stringArray.length; i++) {
+        holdArray.push(capitalizeWord(stringArray[i]))
+      } 
+      let y = holdArray.join(' ')
+      return y
+  }
 
 //////////////////////////////////////////////////////////////////////
 // Function 7 - Welcome Message //////////////////////////////////////
