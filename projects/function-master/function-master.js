@@ -175,14 +175,15 @@ function updateObject(object, key, value) {
 //////////////////////////////////////////////////////////////////////
 
 function removeProperties(object, array) {
-for (let i = 0; i < Object.keys(object).length; i++) {
+  for (let i = 0; i < Object.keys(object).length; i++) {
   for (let j = 0; j < array.length; j++) {
-    if Object.keys(object)[i]
+    if (array[j] === Object.keys(object)[i]) {
+      let holdVariable = (array[j])
+      delete object[holdVariable]
+    }
   }
-
-  }
-
-  }
+ } 
+}
 
 //////////////////////////////////////////////////////////////////////
 // Function 16 - Dedup ///////////////////////////////////////////////
