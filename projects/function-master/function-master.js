@@ -155,9 +155,27 @@ function isFriend(name, object) {
 //////////////////////////////////////////////////////////////////////
 
 
-function nonFriends(name, array) {
-  
+function nonFriends(name, array){
+    let holder = '';
+    let nameArray = [];
+    let finalArray = [];
+    for (let i = 0; i < array.length; i++) {
+        if (array[i].name === name) {
+            holder = array[i];
+      } else {
+            nameArray.push(array[i].name);
+        }
+    } if (holder === ''){
+        return nameArray;
+    } for (let i = 0; i < nameArray.length; i++) {
+        if (holder.friends.indexOf(nameArray[i]) === -1) {
+            finalArray.push(nameArray[i]);
+    }
+  }
+  return finalArray;
 }
+      
+
 
 
 
@@ -190,8 +208,23 @@ function removeProperties(object, array) {
 //////////////////////////////////////////////////////////////////////
 
 function dedup(array) {
-
-}
+  let holderArray = [];
+  let returnArray = [];
+  for (let i = 0; i < array.length; i++) {
+    for (let j = 1; j < array.length; j++) {
+    if (array[j] === array[i] && (i !== j)) {
+      array[j] = 'DELETE_ME'
+    }
+  }
+  }
+  console.log(array)
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] !== 'DELETE_ME') {
+      holderArray.push(array[i])
+  }
+  }
+  return holderArray
+  }
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
