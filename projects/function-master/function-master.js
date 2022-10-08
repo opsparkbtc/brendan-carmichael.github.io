@@ -89,6 +89,8 @@ function capitalizeAllWords(string) {
 //////////////////////////////////////////////////////////////////////
 
 function welcomeMessage(object) {
+  //accesses the name property of object while passing it as an argument to
+  //the capitalizeWord function
   let message = "Welcome " + capitalizeWord(object.name) + "!"
   return message
   }
@@ -99,6 +101,7 @@ function welcomeMessage(object) {
 //////////////////////////////////////////////////////////////////////
 
 function profileInfo(object) {
+  //using dot notation to access object properties, which are passed to capitalizeWord function as arguments
   let message = capitalizeWord(object.name) + ' is a ' + capitalizeWord(object.species)
   return message
 }
@@ -108,11 +111,14 @@ function profileInfo(object) {
 //////////////////////////////////////////////////////////////////////
 
 function maybeNoises(object) {
+  //checks if object has noises property, is an array, and is not empty and returns it as string
   if (object.hasOwnProperty('noises') && Array.isArray(object.noises) === true && (object.noises.length > 0)) {
     return object.noises.join(' ');
+  ////checks if object has noises property which is not an array and returns it as a string
   } else if (object.hasOwnProperty('noises') && Array.isArray(object.noises) === false) {
     return object.noises;
   } else {
+    //If criteria not met, returns string indicating no such property
     return 'there are no noises'
   }
 }
@@ -122,12 +128,16 @@ function maybeNoises(object) {
 //////////////////////////////////////////////////////////////////////
 
 function hasWord(string, word) {
+  //sets a counter which will 'trip' upon finding the second passed argument within the first
   let counter = 0;
+  //creates iterable array from passed string
   let stringArray = string.split(' ')
+  //loops through stringArray and sets counter to indicate match
   for (let i = 0; i < stringArray.length; i++)
   if (stringArray[i] === word) {
     counter += 1
   }
+  //returns true/false based on counter value
   if (counter === 1) {
     return true
   } else {
@@ -140,6 +150,7 @@ function hasWord(string, word) {
 //////////////////////////////////////////////////////////////////////
 
 function addFriend (name, object) {
+//pushes passed name into friends array of passed object
 object.friends.push(name);
 return object;
 }
@@ -149,18 +160,22 @@ return object;
 //////////////////////////////////////////////////////////////////////
 
 function isFriend(name, object) { 
+  //open counter as in "hasWords"
   let counter = 0;
+  //Check for friends property's existence and loops through it in search of match
   if (object.hasOwnProperty('friends') === true) {
     for (let i = 0; i < object.friends.length; i++) {
    if (object.friends[i] === name ) {
   counter += 1;
   }
   }
+  //returns value based on if counter was "tripped" by a match
   if (counter !== 0) {
     return true;
   } else {
     return false
   }
+  //Lack of relevant property returns false
   } else if (object.hasOwnProperty('friends') === false) {
     return false
   }
@@ -172,22 +187,30 @@ function isFriend(name, object) {
 
 
 function nonFriends(name, array){
+    //Opens holder strings and arrays
     let holder = '';
     let nameArray = [];
     let finalArray = [];
+    //loops through input array and filters for the passed name
+    //matches get set as holder's value and nonmatches get pushed to nameArray
     for (let i = 0; i < array.length; i++) {
         if (array[i].name === name) {
             holder = array[i];
       } else {
             nameArray.push(array[i].name);
         }
-    } if (holder === ''){
+    } 
+    //no adds to holder returns nameArray
+    if (holder === ''){
         return nameArray;
-    } for (let i = 0; i < nameArray.length; i++) {
+    }
+    //loops through nameArray for final check of one-sided friendships. Uses indexOf and pushes to our last holder    
+     for (let i = 0; i < nameArray.length; i++) {
         if (holder.friends.indexOf(nameArray[i]) === -1) {
             finalArray.push(nameArray[i]);
     }
   }
+  //returns array of non-friends
   return finalArray;
 }
       
@@ -200,6 +223,7 @@ function nonFriends(name, array){
 //////////////////////////////////////////////////////////////////////
 
 function updateObject(object, key, value) {
+  //This both overwrites present keys and creates a new one with the same line of code
   object[key] = value;
   return object
 }
@@ -209,10 +233,14 @@ function updateObject(object, key, value) {
 //////////////////////////////////////////////////////////////////////
 
 function removeProperties(object, array) {
+  //Used nested for loops, first looping through the keys
   for (let i = 0; i < Object.keys(object).length; i++) {
-  for (let j = 0; j < array.length; j++) {
-    if (array[j] === Object.keys(object)[i]) {
+  //Next loops through the values of those keys
+    for (let j = 0; j < array.length; j++) {
+    //If a match is found between object and array, sets a variable to element of array
+      if (array[j] === Object.keys(object)[i]) {
       let holdVariable = (array[j])
+      //deletes the key that matches holdVariable's name
       delete object[holdVariable]
     }
   }
@@ -224,21 +252,26 @@ function removeProperties(object, array) {
 //////////////////////////////////////////////////////////////////////
 
 function dedup(array) {
+  //open a holder array
   let holderArray = [];
-  let returnArray = [];
+  //Loops through array's items, using i as first of two items to be 'checked'
   for (let i = 0; i < array.length; i++) {
+    //Loops through array again while 'i' is assigned to the same index entry 
     for (let j = 1; j < array.length; j++) {
-    if (array[j] === array[i] && (i !== j)) {
+    //if the strings assigned to i and j indexes have the same value, change j's value to 'DELETE_ME'.
+    //Logical 'and' operator prevents the nested loops from changing when comparing themselves
+      if (array[j] === array[i] && (i !== j)) {
       array[j] = 'DELETE_ME'
     }
   }
   }
-  console.log(array)
+  //Now that all duplicated items have been marked for deletion, we push all unmarked items to a new array
   for (let i = 0; i < array.length; i++) {
     if (array[i] !== 'DELETE_ME') {
       holderArray.push(array[i])
   }
   }
+  //return array of non-duplicates
   return holderArray
   }
 
