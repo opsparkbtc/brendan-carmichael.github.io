@@ -3,7 +3,8 @@
 //////////////////////////////////////////////////////////////////////
 
 function objectValues(object) {
-   return Object.values(object)
+  //return the values of an object with Object.values method
+  return Object.values(object)
 } 
 
 //////////////////////////////////////////////////////////////////////
@@ -11,8 +12,10 @@ function objectValues(object) {
 //////////////////////////////////////////////////////////////////////
 
 function keysToString(object) {
-let x = Object.keys(object)
-x = x.join(" ")
+  //Set a variable to the keys in object
+  let x = Object.keys(object)
+  //convert array to string and return
+  x = x.join(" ")
 return x;
 }
 
@@ -21,13 +24,17 @@ return x;
 //////////////////////////////////////////////////////////////////////
 
 function valuesToString(object) {
+    //open a containing array 
     let array = []
+    //create array of parameter objects's values
     let x = Object.values(object)
+    //loop through x and push the strings to the containing array
     for (let i = 0; i < x.length; i++) {
     if (typeof x[i] === 'string') {
       array.push(x[i])
    }
 }
+//convert the containing array to a string
 let returnString = array.join(' ');
 return returnString
 }
@@ -37,9 +44,11 @@ return returnString
 //////////////////////////////////////////////////////////////////////
 
 function arrayOrObject(collection) {
-    if (Array.isArray(collection) === true) {
+  //Use boolean statement and array prototype method to determine if array is array  
+  if (Array.isArray(collection) === true) {
         return 'array'
-    } else if (typeof collection === 'object') {
+      //Since arrays have already been accounted for, check for non-array objects and return them   
+      } else if (typeof collection === 'object') {
         return 'object'
     }
 
@@ -50,7 +59,9 @@ function arrayOrObject(collection) {
 //////////////////////////////////////////////////////////////////////
 
 function capitalizeWord(string) {
+    //create a variable of all characters which are not the first character
     let slicey = string.slice(1, string.length)  
+    //return the first letter of the parameter string capitalized and with the variable added to the end
     return string[0].toUpperCase() + slicey
   }
 
@@ -59,11 +70,16 @@ function capitalizeWord(string) {
 //////////////////////////////////////////////////////////////////////
 
 function capitalizeAllWords(string) { 
+    //Open a containing array
     let holdArray = []
+    //split input string into an array
     let stringArray = string.split(' ')
+    //use loop to acces each index entry of array and apply prior capitalizeWord function
       for (i = 0; i < stringArray.length; i++) {
+        //push the modified words into containing array
         holdArray.push(capitalizeWord(stringArray[i]))
       } 
+      //create string to be returned from the values in the containing array
       let y = holdArray.join(' ')
       return y
   }
