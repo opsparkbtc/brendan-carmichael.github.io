@@ -1,7 +1,7 @@
 /**
  * DATA TYPES:
  * 
- * 0. In Javascript, we work with several different data types, including integers, strings, boolean values, objects
+ * 0. In Javascript, we work with several different data types. These include integers, strings, boolean values, objects
  * and others. Understanding these data types and what we can and can't do with them is essential. Each data type has
  * properties specific to it, and methods which can be used with that datatype.
  * 
