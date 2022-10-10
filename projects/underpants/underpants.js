@@ -78,6 +78,20 @@ _.typeOf = function(value) {
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
 
+_.first = function(array, number) {
+    if (Array.isArray(array) === false) {
+        let emptyArray = []
+        return emptyArray;
+    } if (typeof number !== 'number') {
+        return array[0]
+    } if ((number >= 0) && (number < array.length)) {
+        for (let i = 0; i < array.length) {
+            return array[i]
+    }
+   }
+   else if ((number >= 0) && (number < array.length))
+    
+
 
 
 
