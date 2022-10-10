@@ -19,21 +19,21 @@ console.log(exampleString) //prints 19 to the console. Spaces are characters.
 //We can manipulate strings somewhat similary to how we might manipulate numbers, but with key differences. Here are some
 //examples.
 
-'string' + 'other string' //this yields 'stringotherstring'
-
 var exampleVar;
 exampleVar = 'string' //the assignment operator is used to assign the string to a variable
 
-exampleVar += 'string' //the Increment/Assignment operator here creates 'stringstring'
+'string' + 'other string' //this yields 'stringotherstring'
+
+exampleVar += 'string' //the uncrement/assignment operator here creates 'stringstring'
 
 //3.0 Manipulation Methods
 //Here we list some of the various methods for manipulating strings:
 //
 //3.1 Slice
-//The spide method takes a 'slice' out of a string for us once passed an inclusive 'start' argument and an
+//The slice method takes a 'slice' out of a string for us once passed an inclusive 'start' argument and an
 //exclusive 'end' argument. Since it doesn't modify the original string, it is considered non-destructive.
 
-console.log(exampleString.slice(0, 4))  //Prints 'This' to the console
+console.log(exampleString.slice(0, 4))  //Prints 'This' to the console (see exampleString at line 15)
 
 //3.2 Split
 //The split method seperates the characters in a string into an array, where they can be more easily accessed or
@@ -41,7 +41,7 @@ console.log(exampleString.slice(0, 4))  //Prints 'This' to the console
 //elements of an array.
 
 exampleString.split(' ') //The passed space character will create ['This', 'is', 'the', 'example']
-exampleString.split('') //This will create an array with every character of the passed string seperated
+exampleString.split('') //This will create an array with every character of the passed string separated
 
 //3.3 Concat
 //The concat method joins two strings, similar to the "+" arithmetic operator. The method is passed a parameter to 
@@ -73,7 +73,16 @@ console.log(newExample.charAt(0)) //returns '5'
 
 //3.7 charCodeAt
 //Similar to charCode, this accesses the unicode value of the character. Javascript uses the UTF-16 standard
-//for organizing its characters. 
+//for organizing its characters.
+
+console.log(newExample.charCodeAt(0)) //returns '53', the index unicode has assigned to the number 5.
+
+let charCodeExample = 'Unicode!'
+
+console.log(charCodeExample.charCodeAt(7)) //returns 33, the index number where unicode stores the '!' symbol.
+
+//We've gone over several common Javascript string methods, but there are many others. We can even create our own!
+
 
 
 
