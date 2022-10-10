@@ -79,17 +79,28 @@ _.typeOf = function(value) {
 */
 
 _.first = function(array, number) {
-    if (Array.isArray(array) === false) {
-        let emptyArray = []
+    //set empty array
+    let emptyArray = []
+    //check to make sure there is an array and number isn't negative
+    if (Array.isArray(array) === false || (number < 0)) {
         return emptyArray;
+    //eliminate non-numbers
     } if (typeof number !== 'number') {
         return array[0]
-    } if ((number >= 0) && (number < array.length)) {
-        for (let i = 0; i < array.length) {
-            return array[i]
+    //loop through array, stopping at the parameter
+    } if ((number >= 0) && (number <= array.length)) {
+        for (let i = 0; i < number; i++) {
+            //push the iterated elements into emptyArray
+            emptyArray.push(array[i])
     }
    }
-   else if ((number >= 0) && (number < array.length))
+   //final check for a number parameter longer than the array 
+   else if ((number >= 0) && (number > array.length)) {
+     return array
+   }
+   //return the array
+   return emptyArray
+}
     
 
 
@@ -112,6 +123,31 @@ _.first = function(array, number) {
 *   _.last(["a", "b", "c"], 1) -> "c"
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
+
+_.last = function(array, number) {
+    //set empty array
+    let emptyArray = [];
+    //check to make sure there is an array and number isn't negative
+    if (Array.isArray(array) === false || (number < 0)) {
+        return emptyArray;
+    //eliminate non-numbers
+    } if (typeof number !== 'number') {
+        return array[array.length - 1]
+    //loop through array backwards, starting at parameter and ending at 0
+    } if ((number >= 0) && (number <= array.length)) {
+        for (let i = array.length - 1; i >= array.length - number; i--) {
+            //unshift the iterated elements into emptyArray
+            emptyArray.unshift(array[i])
+    }
+   }
+   //final check for a number parameter longer than the array 
+   else if ((number >= 0) && (number > array.length)) {
+     return array
+   }
+   //return the array
+   return emptyArray
+}
+
 
 
 /** _.indexOf
