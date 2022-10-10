@@ -21,6 +21,10 @@ var _ = {};
 *   _.identity({a: "b"}) === {a: "b"}
 */
 
+_.identity = function(value) {
+    //Just return the parameter
+    return value
+}
 
 /** _.typeOf
 * Arguments:
@@ -42,6 +46,19 @@ var _ = {};
 * _.typeOf([1,2,3]) -> "array"
 */
 
+_.typeOf = function(value) {
+    //Check for array first, since the array/object distinction is at play
+    if (Array.isArray(value) === true) {
+        return 'array'
+    //check for null
+    } else if (value === null) {
+        return 'null'
+    } else {
+    //typeof operator handles remaining conditions
+    return typeof value
+    }
+}
+
 
 /** _.first
 * Arguments:
@@ -60,6 +77,8 @@ var _ = {};
 *   _.first(["a", "b", "c"], 1) -> "a"
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
+
+
 
 
 /** _.last
@@ -129,6 +148,23 @@ var _ = {};
 *   _.each(["a","b","c"], function(e,i,a){ console.log(e)});
 *      -> should log "a" "b" "c" to the console
 */
+
+_.each = function(collection, func) {
+        //check for array
+        if (Array.isArray(collection)) {
+          //Since collection is an array, iterate through it
+          for (let i = 0; i < collection.length; i++) {
+            //call function on array elements
+            func(collection[i], i, collection)
+          }
+        } else {
+            //iterate with for in loop
+            for (let key in collection) {
+                //call function
+                func(collection[key], key, collection)
+            }
+        }
+}
 
 
 /** _.unique
