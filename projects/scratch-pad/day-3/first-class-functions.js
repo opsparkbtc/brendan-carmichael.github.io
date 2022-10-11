@@ -45,6 +45,8 @@ function createLessThanFilter(base) {
  */
 function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
+    //returning a function that takes in an input string to check (stringToCheck) and returns boolean value of
+    //whether the string's first letter (index 0) matches a passed in character(startsWith). toLowerCase used.
     return (stringToCheck) => (stringToCheck[0].toLowerCase() === startsWith.toLowerCase())
    
     
@@ -61,6 +63,8 @@ function createStartsWithFilter(startsWith) {
  */
 function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
+    //returning a function that takes in an input string to check (stringToCheck) and returns boolean value of
+    //whether the string's last letter (index.length - 1) matches a passed in character (endsWith). toLowerCase used.
     let endChecker = (stringToCheck) => (stringToCheck[stringToCheck.length - 1].toLowerCase() === endsWith.toLowerCase())
     return endChecker;
     
@@ -78,9 +82,14 @@ function createEndsWithFilter(endsWith) {
  */
 function modifyStrings(strings, modify) {
     // YOUR CODE BELOW HERE //
+    //open a holding array
     let modified = [];
+    //loop through passed-in array
     for (let i = 0; i < strings.length; i++)
+      //push elements to holding array once callback function has been called on the iterated-through 
+      //elements of the passed in array
       modified.push(modify(strings[i]))
+      //return the holding array we opened at the beginning
       return modified;
     
     
