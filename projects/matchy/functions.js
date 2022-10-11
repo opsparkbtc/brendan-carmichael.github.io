@@ -73,7 +73,7 @@ function add(animals, animal) {
             nameChecker += 1
         }
     }
-    //If the animal has a name and species and the checker has not be tripped, push the animal to animals array
+    //If the animal has a name and species and the checker has not been tripped, push the animal to animals array
     if (animal.name.length > 0 && animal.species.length > 0 && nameChecker < 1) {
         animals.push(animal)
 
