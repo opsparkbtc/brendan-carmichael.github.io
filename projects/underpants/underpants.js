@@ -166,6 +166,22 @@ _.last = function(array, number) {
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
 
+_.indexOf = function (array, value){
+    // creating loop to through the array
+     for(let i = 0; i <= array.length - 1; i++){
+    //creating if statement that returns the index of array if it truly equals value 
+           if(array[i] === value){
+  //    returning the index which equals value using includes 
+    return i; 
+        // returning negative -1 if array does not include value 
+      } 
+  }
+     return -1; 
+   }
+
+
+
+
 
 /** _.contains
 * Arguments:
@@ -243,6 +259,17 @@ _.each = function(collection, func) {
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
 
+/*
+
+_.unique = function(array) {
+    let newArray = [];
+    for (let i = 0; i < array.length; i++) {
+        _.unique(array)
+    }
+} 
+
+/*
+
 
 /** _.filter
 * Arguments:
@@ -259,6 +286,24 @@ _.each = function(collection, func) {
 * Extra Credit:
 *   use _.each in your implementation
 */
+
+
+
+_.filter = function(array, func) {
+    let newArray = [];
+    if (func !== undefined) {
+        for (let i = 0; i < array.length; i++) {
+            if (func(array[i], i, array) === true) {
+                    newArray.push(array[i])
+                }
+        }
+    }
+    return newArray
+}
+
+
+
+
 
 
 /** _.reject
@@ -345,6 +390,49 @@ _.each = function(collection, func) {
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
 
+/*
+_.every = function(collection, func) {
+    //determine if func was not passed in
+     if (func === undefined) {
+        //determine if array
+        if (Array.isArray(collection)) {
+            (let i = 0; i < collection.length; i++) {
+             if (collection[i]); {
+               return false
+             }
+            }
+        } else {
+            //if not array, check and return false
+            for (let key in collection){
+                if (!collection[key]) {
+                    return false
+                }
+            }
+        }
+     
+    
+    } else {
+        if (Array.isArray(collection)) {
+        //iterate through array
+        for (let i = 0; i < collection.length; i++) {
+            //determine if result of calling funcs on parameters is true
+            if (func(collection[i], i, collection) !== true) {
+              return false;
+            }
+       }
+
+     } else {
+        //since it's an object, iterate through object keys
+        for (let key in collection) {
+            if (func(collection[key],key, collection)) {
+                return false
+            }
+        }
+    
+     }
+} return true
+}
+*/
 
 /** _.some
 * Arguments:
