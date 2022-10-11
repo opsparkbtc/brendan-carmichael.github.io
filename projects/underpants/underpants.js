@@ -182,6 +182,22 @@ _.last = function(array, number) {
 *   _.contains([1,"two", 3.14], "two") -> true
 */
 
+_.contains = function(array, value) {
+    //set a counter which will trip later if our loop gives us a match
+    let counter = 0  
+    //loop through array
+    for (let i = 0; i < array.length; i++) {
+        //if we get a match, increment counter
+        if (array[i] === value) {
+          counter += 1
+        }
+     }
+    //ternary operator returns true or valse depending on if we got a match
+     return (counter > 0 ? true: false)
+  }
+
+
+
 
 /** _.each
 * Arguments:
