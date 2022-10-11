@@ -34,6 +34,7 @@
  */
 
 // YOUR CODE GOES BELOW HERE //
+//function returns a new contact object
 function makeContact(id, nameFirst, nameLast) {
 return {id: id,
         nameFirst: nameFirst,
@@ -58,8 +59,11 @@ function makeContactList() {
             return contactArray.push(contact);
         },
         findContact: function(fullName) {
+            //loop through contact array
             for (let i = 0; i < contactArray.length; i++)
+              //access the nameFirst and nameLast properties and add them together. Then match with the fullName parameter.
               if (contactArray[i].nameFirst + ' ' + contactArray[i].nameLast === fullName) {
+                //return our match
                 return contactArray[i]
               } 
         },
@@ -73,11 +77,17 @@ function makeContactList() {
         },
         //Need to deal with the newline characters
         printAllContactNames: function() {
+            //open holding array
             let holdingArray = []
+            //loop through array
             for (let i = 0; i < contactArray.length ; i++)
+              //push to holding array concatenated string of nameFirst and nameLast, including a newline character for formatting
               holdingArray.push(contactArray[i].nameFirst + ' ' + contactArray[i].nameLast + '\n')
+            //convert the holding array into a string
             let joinedString = holdingArray.join('')
+            //perform final modification to eliminate newline character from the final name
             let finalString = joinedString.slice(0, joinedString.length - 1)
+            //return our properly formatted string
             return finalString
         }   
         
