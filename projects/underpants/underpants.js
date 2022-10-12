@@ -268,7 +268,9 @@ _.unique = function(array) {
     }
 } 
 
-/*
+*/
+
+
 
 
 /** _.filter
@@ -475,33 +477,26 @@ _.pluck = function(arrayOfObjects, property) {
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
 
-/*
+
 _.every = function(collection, func) {
     //determine if func was not passed in
      if (func === undefined) {
         //determine if array
         if (Array.isArray(collection)) {
-            (let i = 0; i < collection.length; i++) {
-             if (collection[i]); {
+            //iterate and check for false
+            for (let i = 0; i < collection.length; i++) {
+             if (!collection[i]) {
                return false
              }
             }
+        } 
         } else {
-            //if not array, check and return false
-            for (let key in collection){
-                if (!collection[key]) {
-                    return false
-                }
-            }
-        }
-     
-    
-    } else {
+        //func was provided, determine if array
         if (Array.isArray(collection)) {
         //iterate through array
         for (let i = 0; i < collection.length; i++) {
             //determine if result of calling funcs on parameters is true
-            if (func(collection[i], i, collection) !== true) {
+            if (func(collection[i], i, collection) === false) {
               return false;
             }
        }
@@ -509,15 +504,18 @@ _.every = function(collection, func) {
      } else {
         //since it's an object, iterate through object keys
         for (let key in collection) {
-            if (func(collection[key],key, collection)) {
+            //if false, return false
+            if (func(collection[key], key, collection) === false) {
                 return false
             }
-        }
+        } 
     
-     }
-} return true
+    }
+} 
+//finally, return true
+return true
 }
-*/
+
 
 /** _.some
 * Arguments:
@@ -541,6 +539,10 @@ _.every = function(collection, func) {
 */
 
 
+
+
+
+
 /** _.reduce
 * Arguments:
 *   1) An array
@@ -560,6 +562,30 @@ _.every = function(collection, func) {
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
 
+_.reduce = function(array, func, seed){
+    //create result variable
+    let result;
+    //determine if seed value was not given a value
+    if (seed === undefined){
+      //assign result to first value of array  
+      result = array[0];
+      // iterate through input array
+      for (let i = 1; i < array.length; i++){
+        result = func(result, array[i], i, array)
+      }
+    
+    } else {
+        //assign result the value of seed
+        result = seed;
+        //iterate normally
+        for (let i = 0; i < array.length; i++) {
+            result = func(result, array[i], i, array)
+        }
+    }
+    return result;
+}
+
+
 
 /** _.extend
 * Arguments:
@@ -575,6 +601,17 @@ _.every = function(collection, func) {
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
+
+_.extend = function(object1, object2, ...object) {
+    //set a new object as the return value of Object.assign. Use spread operator to accept arbitrary number of
+    //additional arguments.
+    let newObj = Object.assign(object1, object2, ...object)
+    return newObj;
+}
+
+
+
+
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
