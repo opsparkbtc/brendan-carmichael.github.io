@@ -413,10 +413,10 @@ _.map = function(collection, func) {
         }
     //if array is not an array, return false
     } else if ((Array.isArray(collection)) === false) {
-        //iterate through array
-        for (let i = 0; i < collection.length; i++) {
+        //access object with for/in loop
+        for (let key in collection) {
             //call function and push elements to new array
-            newArray.push(func(collection[i], [i], collection))
+            newArray.push(func(collection[key], [key], collection))
         }
     }
       return newArray
@@ -436,6 +436,22 @@ _.map = function(collection, func) {
 * Examples:
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
+
+_.pluck = function(arrayOfObjects, property) {
+    //initialize containing array
+    let returnArray = [];
+    //iterate through array
+    for (let i = 0; i < arrayOfObjects.length; i++) {
+        //use for/in loop to acces object properties
+        for (let key in arrayOfObjects[i]) {
+        //if desired property is present, push it to our containing array
+        if (key === property) {
+            returnArray.push(arrayOfObjects[i][key])
+        }
+    }
+  }
+  return returnArray
+}
 
 
 /** _.every
