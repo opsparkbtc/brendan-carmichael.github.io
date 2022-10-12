@@ -444,7 +444,7 @@ _.pluck = function(arrayOfObjects, property) {
     for (let i = 0; i < arrayOfObjects.length; i++) {
         //use for/in loop to acces object properties
         for (let key in arrayOfObjects[i]) {
-        //if desired property is present, push it to our containing array
+        //if desired property is present, push it to our containing
         if (key === property) {
             returnArray.push(arrayOfObjects[i][key])
         }
