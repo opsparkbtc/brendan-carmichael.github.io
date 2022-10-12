@@ -538,6 +538,53 @@ return true
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
 
+_.some = function(collection, func) {
+    //determine if func was not passed in
+     if (func === undefined) {
+        //determine if array
+        if (Array.isArray(collection)) {
+            //iterate and check for false
+            for (let i = 0; i < collection.length; i++) {
+             if (!collection[i]) {
+               return false
+             }
+            }
+        } 
+        } else {
+        //func was provided, determine if array
+        if (Array.isArray(collection)) {
+        //open counter for incrementation
+        let counter = 0
+        //iterate through array
+        for (let i = 0; i < collection.length; i++) {
+            //determine if result of calling funcs on parameters
+            if (func(collection[i], i, collection) === false) {
+              counter += 0;
+            } else if (func(collection[i], i, collection) === true) {
+                counter += 1;
+            }
+           
+       } if (counter > 0) {
+        return true
+       } else {
+        return false
+       }
+
+     } else {
+        //since it's an object, iterate through object keys, checking to see if some are true
+        for (let key in collection) {
+            //if false, return false
+            if (func(collection[key], key, collection) === true) {
+                return true
+            }
+        } 
+    
+    }
+} 
+//finally, return true
+return true
+}
+
 
 
 
