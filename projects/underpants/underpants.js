@@ -290,14 +290,19 @@ _.unique = function(array) {
 
 
 _.filter = function(array, func) {
+    //open holding array
     let newArray = [];
+    //proceed if a function has been passed
     if (func !== undefined) {
+        //loop through array
         for (let i = 0; i < array.length; i++) {
+            //if all parameters evaluate to true, push the array elements into the holding array
             if (func(array[i], i, array) === true) {
                     newArray.push(array[i])
                 }
         }
     }
+    //return the array of filtered elements
     return newArray
 }
 
@@ -319,6 +324,25 @@ _.filter = function(array, func) {
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
 
+_.reject = function(array, func) {
+    //open holding array
+    let newArray = [];
+    //proceed if a function has been passed
+    if (func !== undefined) {
+        //loop through array
+        for (let i = 0; i < array.length; i++) {
+            //if all parameters evaluate to false, push the array elements into the holding array
+            if (func(array[i], i, array) === false) {
+                    newArray.push(array[i])
+                }
+        }
+    }
+    //return the array of filtered elements
+    return newArray
+}
+
+
+
 
 /** _.partition
 * Arguments:
@@ -339,6 +363,27 @@ _.filter = function(array, func) {
 }
 */
 
+_.partition = function(array, func) {
+    //initialzie two holding arrays
+    let truthyArray = [];
+    let falsyArray = [];
+    //iterate through array
+    for (let i = 0; i < array.length; i++) {
+        //if calling function returns true, push to appropriate array
+        if ((func(array[i], i, array)) === true) {
+          truthyArray.push(array[i])
+    //Since true is accounted for, all others must be false and are pushed to appropriate array
+    } else {
+        falsyArray.push(array[i])
+    }
+}
+//create a final array and add the truthy and falsy arrays to it, then return
+let combinedArray = [];
+combinedArray.push(truthyArray, falsyArray)
+return combinedArray
+}
+
+
 
 /** _.map
 * Arguments:
@@ -355,6 +400,30 @@ _.filter = function(array, func) {
 * Examples:
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
+
+_.map = function(collection, func) {
+    //initialize containing array
+    let newArray = [];
+    //check that collection is an array
+    if (Array.isArray(collection)) {
+        //iterate through array
+        for (let i = 0; i < collection.length; i++) {
+          //call function and push elements to new array
+          newArray.push(func(collection[i], i, collection))
+        }
+    //if array is not an array, return false
+    } else if ((Array.isArray(collection)) === false) {
+        //iterate through array
+        for (let i = 0; i < collection.length; i++) {
+            //call function and push elements to new array
+            newArray.push(func(collection[i], [i], collection))
+        }
+    }
+      return newArray
+    }
+    
+    
+
 
 
 /** _.pluck
