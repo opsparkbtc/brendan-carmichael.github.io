@@ -167,17 +167,16 @@ _.last = function(array, number) {
 */
 
 _.indexOf = function (array, value){
-    // creating loop to through the array
-     for(let i = 0; i <= array.length - 1; i++){
-    //creating if statement that returns the index of array if it truly equals value 
-           if(array[i] === value){
-  //    returning the index which equals value using includes 
-    return i; 
-        // returning negative -1 if array does not include value 
-      } 
+    //loop through array
+     for (let i = 0; i <= array.length - 1; i++){
+    //check for match to value 
+       if (array[i] === value){
+       //return appropriate index
+         return i; 
+       }
+       // return negative -1 if array does not include value 
+       } return -1; 
   }
-     return -1; 
-   }
 
 
 
@@ -240,7 +239,7 @@ _.each = function(collection, func) {
             func(collection[i], i, collection)
           }
         } else {
-            //iterate with for in loop
+            //iterate with for/in loop
             for (let key in collection) {
                 //call function
                 func(collection[key], key, collection)
@@ -259,16 +258,32 @@ _.each = function(collection, func) {
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
 
-/*
-
 _.unique = function(array) {
-    let newArray = [];
-    for (let i = 0; i < array.length; i++) {
-        _.unique(array)
+    //initialize and populate holding array to help make method non-destructive/without side effects 
+    let holdArray = []
+    for (let x = 0; x < array.length; x++) {
+      holdArray.push(array[x])
     }
+    //initialize final array to be returned later
+    let finalArray = [];
+    //use nested for loops to check for duplicates.
+    for (let i = 0; i < holdArray.length; i++) {
+      for (let j = 0; j < holdArray.length; j++) {
+      //if match and self-targeting avoided via i !== j, mark element for abandonment 
+      if ((holdArray[i] === holdArray[j]) && (i !== j)) {
+      holdArray[j] = 'ABANDON ME'
+    }    
+  }
+}
+  //loop through array and push non-duplicates to new array
+  for (let k = 0; k < holdArray.length; k++) {
+    if (holdArray[k] !== 'ABANDON ME') {
+      finalArray.push(holdArray[k])
+    }
+  }
+  //return new array of non-duplicates
+  return finalArray
 } 
-
-*/
 
 
 
@@ -446,7 +461,7 @@ _.pluck = function(arrayOfObjects, property) {
     for (let i = 0; i < arrayOfObjects.length; i++) {
         //use for/in loop to acces object properties
         for (let key in arrayOfObjects[i]) {
-        //if desired property is present, push it to our containing
+        //if desired property is present, push it to our containing array
         if (key === property) {
             returnArray.push(arrayOfObjects[i][key])
         }
@@ -557,13 +572,13 @@ _.some = function(collection, func) {
         let counter = 0
         //iterate through array
         for (let i = 0; i < collection.length; i++) {
-            //determine if result of calling funcs on parameters
+            //determine if result of calling funcs on collection elements is true or false
             if (func(collection[i], i, collection) === false) {
               counter += 0;
             } else if (func(collection[i], i, collection) === true) {
                 counter += 1;
             }
-           
+         //check counter to determine if an element was true and return true or false
        } if (counter > 0) {
         return true
        } else {
