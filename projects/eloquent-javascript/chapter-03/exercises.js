@@ -3,7 +3,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 function min(first, second) {
-    if (first > second) {
+   //use if/else statements and comparison statements to determine smaller number 
+   if (first > second) {
       return second;
     } else if (second > first) {
       return first;
@@ -18,6 +19,8 @@ function min(first, second) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function isEven(number) {
+    //use if/else statements and recurse calls to determine if number is even or odd. Decrementings
+    //eventually reaches our base cases.
     if (number === 0) {
       return true
     } else if (number === 1) {
@@ -34,12 +37,16 @@ function isEven(number) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function countChars(string, character) {
+  //initialize counting variable
   let counter = 0;  
+  //use for loop and equality operator to increment counter
   for (let i = 0; i < string.length - 1; i++) {
        if (string[i] === character) { 
        counter += 1
        }      
-  } return counter; 
+  } 
+  //return counter, representing our character count
+  return counter; 
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -47,12 +54,17 @@ function countChars(string, character) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function countBs(string) {
+  //initialize counting variable
   let counter = 0;  
+  //use for loop and equality operator to increment counter
   for (let i = 0; i < string.length - 1; i++) {
-       if (string[i].toLowerCase() === 'b') { 
+      //use toLowerCase  
+      if (string[i].toLowerCase() === 'b') { 
        counter += 1
        }     
-  } return counter; 
+  } 
+  //return counter, representing our 'b' count
+  return counter; 
 }
 
 ////////////////////////////////////////////////////////////////////////////////

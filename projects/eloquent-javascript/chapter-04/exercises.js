@@ -3,7 +3,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 function range(start, end, step = 1) {
+  //open holding array
   let arrayHolder = [];
+  //use if/else if statements to push elements which conform to comparisons into a new array
   if (start > end && step >= 1) {
       for (let i = end; i <= start; i += step) {
       arrayHolder.push(i);
@@ -26,7 +28,9 @@ return arrayHolder
 ////////////////////////////////////////////////////////////////////////////////
 
 function sum(array) {
+  //initialize a variable to be returned
   let returnVar = 0; 
+  //loop through and add elements to returnVar
   for (i = 0; i < array.length; i++) {
      returnVar += array[i];
    } return returnVar;
@@ -37,7 +41,9 @@ function sum(array) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function reverseArray(array) {
+  //initialize holding array
   var reversed = [];
+  //loop backwards through array and push elements to new array
   for (var i = array.length - 1; i >= 0; i--) {
     reversed.push(array[i]) 
 }
@@ -50,16 +56,21 @@ function reverseArray(array) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function reverseArrayInPlace(array) {
+  //establish variable for length and a holding array.
   let lengthVar = array.length
-  let x = lengthVar
   let holder = []
+  //loop through array and push its elements to holder array in reverse order
   for (i = lengthVar - 1; i >= 0; i--) {
     holder.push(array[i]);
+   //empty array of current elements
   } for (i = 0; i < lengthVar; i++) {
     array.pop(array[i])
-  } for (i = 0; i < x; i++) {
+  //iterate through holder and push elements into original array
+  } for (i = 0; i < lengthVar; i++) {
     array.push(holder[i])
-} return array;
+} 
+//return original array, which now has its elements reversed
+return array;
 }
 
 
@@ -68,18 +79,35 @@ function reverseArrayInPlace(array) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function arrayToList(inputArray) {
-   let list = {value: inputArray[0],
-                rest: {value: inputArray[1],
-                        rest: {value: inputArray[2],
-                                rest: null} } }
+  //set list to null. Start at the very end.
+  let list = null; 
+  //iterate through list backwards
+  for (let i = inputArray.length - 1; i >= 0; i--) {
+    //build list from last element to first. Last object's 'rest' key is null. Second to last object's
+    //'rest' key is last object. Third to last object's rest key is second to last object, etc.
+    list = {value: inputArray[i], rest: list}
+  }
+return list
 }
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // listToArray /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function listToArray(inputList) {
-  
+function listToArray(list) {
+  //initialize array to receive pushed values
+  let finalArray = []
+  //initialize variable to hold modified array value
+  let tempArray = list
+  //begin while loop and push values
+  let counter = 0
+  while (tempArray) {
+    finalArray.push(tempArray.value)
+    //reset value while looping for de facto iteration
+    tempArray = tempArray.rest
+  }
+  return finalArray
 }
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -4,7 +4,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 function triangles(size) {
+  //output a '#'
   let output = '#'
+  //use for loop to increment the length to desired size
   for (let i = 0; i < size; i++) { 
     console.log(output);
     output += '#'
@@ -15,8 +17,10 @@ function triangles(size) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function fizzBuzz(start, end) {
-  for (let i = start; i <= end; i++) {
-  if (i % 3 === 0 && i % 5 === 0) {
+  //iterate
+  for (let i = start; i <= end; i++) {  
+    //use if/else statements with modulo to get fizz, buzz, and fizzbuzz
+    if (i % 3 === 0 && i % 5 === 0) {
     console.log('fizzbuzz');
   } else if (i % 3 === 0) {
     console.log('fizz');
@@ -33,15 +37,19 @@ function fizzBuzz(start, end) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function drawChessboard(size) {
+  //open a string to receive the output to be drawn
   let boardString = ''
+  //create grid with nested for loops
   for (let i = 0; i < size; i++) {
   for (let j = 0; j < size; j++) {
+    //use % operator to determine string content
     if ((i + j) % 2 === 0) {
       boardString += ' ';
 } else {
       boardString += '#'
 }
 }
+//newline string to go to next line
 boardString += '\n'    
 }
 console.log(boardString);
