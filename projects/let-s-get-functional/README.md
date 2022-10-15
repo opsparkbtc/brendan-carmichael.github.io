@@ -81,7 +81,7 @@ const _ = require('lodown-oliviasaborush');
  - **Objective**: Find the three most common tags among all customers' associated tags
  - **Input**: `Array`
  - **Output**: `Array`
- - **Constraints**:
+ - **Constraints**: use `pluck`
 
 ### 10: `genderCount`
  - **Objective**: Create a summary of genders, the output should be:

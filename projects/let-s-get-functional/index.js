@@ -148,11 +148,69 @@ var friendsCount = function(array, name) {
     return holdingArray;
 }
 
-
+//Spend way too long building a heinous frankenstein's monster
 var topThreeTags = function(array){
-    let x = _.pluck(array, tags);
-    return x
-}
+    //Use pluck to grab all of the tags
+    let plucked = _.pluck(array, 'tags');
+    //flatten them all into one basic array 
+    plucked = plucked.flat()
+    //do the same to a mirror of the array to better enable
+    //modification while iterating
+    let mirror = _.pluck(array, 'tags');
+    mirror = plucked.flat()
+    //open two destination arrays to be used sequentially
+    let holdArray = []
+    //open variables to hold values for later if statement
+    let newHoldArray = []
+    let holdString = ''
+    //iterate through the array
+    for (let i = 0; i < plucked.length; i++) {
+      let counter = 0;
+      //if matches are found, alter them in mirrored array
+      for (let j = 0; j < plucked.length; j++) {
+        if (plucked[i] === plucked[j]) {
+          holdString = mirror[j];
+          counter += 1;
+          mirror[j] = 'SKIP' 
+        } 
+      }
+      /* de facto push all elements into holdArray, with
+      //each element becoming an object entry with a number
+      //property to be used for counting */
+      holdArray.push({name: holdString, number: counter})
+    } //iterate through the array of objects and remove skips
+     for (let k = 0; k < holdArray.length; k++) {
+      if (holdArray[k].name !== 'SKIP') {
+        newHoldArray.push(holdArray[k])
+      }
+    } 
+    //set holding variables to handle data
+    let finalArray = []
+    //while loop ensures we receieve 3 items in future array
+    while (finalArray.length < 3) {
+    //more holding variables
+    let lastCounter = 0
+    let lastString = ''
+      //iterate through list and raise counter, excluding elements
+      //with less occurences until the most common are obtained
+      for (let m = 0; m < newHoldArray.length; m++) {
+      if (newHoldArray[m].number > lastCounter) {
+        //Update with the loop's best "candidate" so far 
+        lastString = newHoldArray[m].name
+        lastCounter = newHoldArray[m].number
+      }
+    } //push to actual, final, I-mean-it-this-time-array
+      finalArray.push(lastString)
+      //remove the array element once it has been chosen as one
+      //of the longest
+      for (let n = 0; n < newHoldArray.length; n++) {
+        if (newHoldArray[n].name === lastString) {
+          newHoldArray.splice(n, 1)
+        }
+      }
+    }
+    return finalArray
+  }
 
 var genderCount;
 
