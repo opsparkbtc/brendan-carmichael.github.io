@@ -71,9 +71,57 @@ return true
 // dominantDirection ///////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
+
+
 function dominantDirection() {
 
-}
+  //declare pre-made countBy function provided earlier in the chapter
+  function countBy(items, groupName) {
+    //open holding array
+    let counts = [];
+    //loop through characters
+    for (let item of items) {
+      //count how many characters belong to script passed to the
+      //groupName paramaeter
+      let name = groupName(item);
+      let known = counts.findIndex(c => c.name == name);
+      if (known == -1) {
+        counts.push({name, count: 1});
+      } else {
+        counts[known].count++;
+      }
+    }
+    return counts;
+  } //declare pre-made characterScript function provided earlier in the //chapter
+  let charScript = function characterScript(code) {
+    //loop through script
+    for (let script of SCRIPTS) {
+      //determine what script the code belongs to and return script
+      if (script.ranges.some(([from, to]) => code >= from &&
+                                             code < to)) {
+        return script;
+      }
+    }
+    return null;
+  }
+  
+    let scripts = countBy(text, char => {
+      let script = characterScript(char.codePointAt(0));
+      return script ? script.direction : "none";
+    }).filter(({name}) => name != "none");
+    switch (scripts.length) {
+      case 0:
+        return 'no dominant direction found';
+      case 1:
+        return scripts[0].name;
+      default:
+        if (scripts.reduce((acc, cur) => acc.count === cur.count)) {
+          return 'no dominant direction found';
+        } else {
+          return scripts.reduce((acc, cur) => acc.count >= cur.count ? acc.name : cur.name);
+        }
+    }
+  }
 
 // /////////////////////////////////////////////////////////////////////////////
 //  //////////////////////////////////////////////////////

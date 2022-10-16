@@ -234,7 +234,8 @@ var topThreeTags = function(array){
     nonBinaryArray = _.reduce(nonBinaryArray, (a, b) => a + b)  
     //place the reduced values in an object and return object
     let returnObject = {male: maleArray, female: femaleArray, 
-   nonbinary: nonBinaryArray}
+   //type last key as string since the hyphen causes issues
+   'non-binary': nonBinaryArray}
     return returnObject
   }
 

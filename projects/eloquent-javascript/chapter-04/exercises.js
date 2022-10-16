@@ -114,17 +114,36 @@ function listToArray(list) {
 // prepend /////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function prepend() {
-
+function prepend(element, list) {
+  //create a new object with the provided element and add the passed list to it
+  let newList = {value: element, rest: list}
+  return newList
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // nth /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function nth() {
+function nth(list, number){
+  //open holder 
+  let holder = list;
+  //return value if we've reached end of recursion.
+    if (number === 0) {
+      return holder.value
+    }//check holder for rest property
+      else  {
+        //if rest property present, set new value to holder
+        if (holder.rest) {
+        holder = holder.rest;
+          //return for continued recursion with second parameter decremented. Count backwards to go
+          //forwards via the rest property that links the list elements
+          let checker = nth(holder, number - 1); 
+          return checker
+        }
+    }
+  }
 
-}
+  
 
 ////////////////////////////////////////////////////////////////////////////////
 // deepEqual ///////////////////////////////////////////////////////////////////
