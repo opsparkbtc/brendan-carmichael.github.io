@@ -212,7 +212,31 @@ var topThreeTags = function(array){
     return finalArray
   }
 
-var genderCount;
+  var genderCount = function(array) {
+    //create holders, which receive a '1' for each match
+    let maleArray = [];
+    let femaleArray = [];
+    let nonBinaryArray = [];
+    //loop through array and push matches to appropriate arrays
+    for (let i = 0; i < array.length; i++) {
+      if (array[i].gender === 'male') {
+        maleArray.push(1)
+      } else if (array[i].gender === 'female') {
+        femaleArray.push(1)
+      } else if (array[i].gender === 'non-binary') {
+        nonBinaryArray.push(1)
+      }
+    }
+    //use _.reduce to reduce arrays to single number. function
+    //passed to _.reduce is anonymous arrow sum function
+    maleArray = _.reduce(maleArray, (a, b) => a + b)
+    femaleArray = _.reduce(femaleArray, (a, b) => a + b)
+    nonBinaryArray = _.reduce(nonBinaryArray, (a, b) => a + b)  
+    //place the reduced values in an object and return object
+    let returnObject = {male: maleArray, female: femaleArray, 
+   nonbinary: nonBinaryArray}
+    return returnObject
+  }
 
 //npm start --prefix ./brendan-carmichael.github.io/projects/let-s-get-functional
 
