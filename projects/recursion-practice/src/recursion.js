@@ -195,10 +195,16 @@ var reverse = function(string, holder='', counter=string.length - 1) {
   }
 };
 
-// 10. Write a function that determines if a string is a palindrome.
-var palindrome = function(string) {
 
-};
+// 10. Write a function that determines if a string is a palindrome.
+/* var palindrome = function(string, hold='', counter=string.length - 1) {
+  if (string.length === holder.length && string === holder) {
+    return true
+  } else if (string.length === holder.length && string !== holder) {
+} return false
+} else {
+  return palindrome(string, holder + string[counter], counter - 1)
+} */
 
 // 11. Write a function that returns the remainder of x divided by y without using the
 // modulo (%) operator.
@@ -208,11 +214,33 @@ var palindrome = function(string) {
 var modulo = function(x, y) {
 };
 
+
 // 12. Write a function that multiplies two numbers without using the * operator  or
 // JavaScript's Math object.
 // ATTENTION DO NOT LEAVE COMMENTS IN THIS FUNCTION. The test is looking for any ('/').
-var multiply = function(x, y) {
-};
+
+var multiply = function(x, y, holdValue=x) {
+  
+  if (y < 0) {
+    
+    if (y === -1) {
+    return -x
+  }   else {
+      
+      return multiply(x + holdValue, y + 1, holdValue)
+ } 
+} else  {
+  
+  if (y === 1) {
+  return x
+  
+  } else if (y > 0) {
+   
+    return multiply(x + holdValue, y - 1, holdValue)
+ }
+} 
+  return 0
+}
 
 // 13. Write a function that divides two numbers without using the / operator  or
 // JavaScript's Math object.
@@ -232,34 +260,108 @@ var gcd = function(x, y) {
 // compareStr('house', 'houses') // false
 // compareStr('', '') // true
 // compareStr('tomato', 'tomato') // true
-var compareStr = function(str1, str2) {
-};
+
+var compareStr = function(str1, str2, counter=str1.length - 1) {
+  //if mismatch is hit, return false
+  if (counter >= 0) {
+  if (str1[counter] !== str2[counter]) {
+    return false
+  } else {
+    //call function recursively, decrementing counter until zero
+    return compareStr(str1, str2, counter - 1)
+  }
+  } //cleanup for empty arrays 
+  else if (counter < 0) {
+    if (str1.length === str2.length) {  
+      return true
+} else {
+    return false
+    }
+  }
+}
+
 
 // 16. Write a function that accepts a string and creates an array where each letter
 // occupies an index of the array.
-var createArray = function(str){
+
+var createArray = function(str, array=[], counter=0){
+  //base case reached when array and str are same length
+  if (str.length === array.length) {
+   return array
+ } else {
+   //push first index of string into array
+   array.push(str[counter])
+   //recursive calls with counter incremented to advance index
+   return createArray(str, array, counter + 1)
+ }
 };
 
+
 // 17. Reverse the order of an array
-var reverseArr = function (array) {
+var reverseArr = function(array, holder=[], counter=array.length - 1) {
+  //base case is when <holder> is length of <array>, indicating reversal
+  if (holder.length === array.length) {
+    return holder
+  } else {
+  //push index of <array> to <holder>, then recur and decrement counter
+    holder.push(array[counter])
+    return reverseArr(array, holder, counter - 1)
+  }
 };
+
 
 // 18. Create a new array with a given value and length.
 // buildList(0,5) // [0,0,0,0,0]
 // buildList(7,3) // [7,7,7]
-var buildList = function(value, length) {
+
+var buildList = function(value, length, array=[]) {
+  //base case is when length of <array> equals <length>
+  if (array.length === length) {
+    return array
+  } else {
+    //push <value> into array
+    array.push(value)
+    //call function until base case reached
+    return buildList(value, length, array)
+  }
 };
+
 
 // 19. Count the occurence of a value inside a list.
 // countOccurrence([2,7,4,4,1,4], 4) // 3
 // countOccurrence([2,'banana',4,4,1,'banana'], 'banana') // 2
-var countOccurrence = function(array, value) {
-};
+
+var countOccurrence = function(array, value, index=0, counter=0) {
+  //base case is when <index> has been incremented to length of <array>
+  if (index === array.length) {
+    return counter
+  } else {
+    //if match, <increment> counter and increment <index>
+    if (array[index] === value) {
+      return countOccurrence(array, value, index + 1, counter + 1)
+  } else {
+    //if not a match, leave <counter> the same but increment <index>
+     return countOccurrence(array, value, index + 1, counter + 0)
+   }
+ }
+}
+
 
 // 20. Write a recursive version of map.
 // rMap([1,2,3], timesTwo); // [2,4,6]
-var rMap = function(array, callback) {
+
+var rMap = function(array, callback, newArray=[], counter=0) {
+  //reach base case when new mapped array is same length as <array>
+  if (counter === array.length) {
+    return newArray
+  } else {
+    //push element into new array after passing it to callback
+    newArray.push(callback(array[counter]))
+    //recur and increment counter to advance index
+    return rMap(array, callback, newArray, counter + 1)
+  }
 };
+
 
 // 21. Write a function that counts the number of times a key occurs in an object.
 // var testobj = {'e': {'x':'y'}, 't':{'r': {'e':'r'}, 'p': {'y':'r'}},'y':'e'};
