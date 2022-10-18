@@ -184,7 +184,7 @@ var powerOfTwo = function(n) {
 };
 
 
-// 9. Write a function that accepts a string a reverses it.
+// 9. Write a function that accepts a string and reverses it.
 var reverse = function(string, holder='', counter=string.length - 1) {
   //base case is when holder is length of string, indicating reversal
   if (holder.length === string.length) {
@@ -197,14 +197,23 @@ var reverse = function(string, holder='', counter=string.length - 1) {
 
 
 // 10. Write a function that determines if a string is a palindrome.
- var palindrome = function(string, hold='', counter=string.length - 1) {
-  /*if (string.length === holder.length && string === holder) {
+
+var palindrome = function(string, checkString='', index=string.length - 1) {
+  //check if reversed string is complete and return true if 
+  //palindrome. Use regex to remove spaces and toLowerCase to account for capitalization
+  if (string.length === checkString.length && string.replace(/[\s]/g, '').toLowerCase()
+   === checkString.replace(/[\s]/g, '').toLowerCase()) {
     return true
-  } else if (string.length === holder.length && string !== holder) {
-} return false
-} else {
-  return palindrome(string, holder + string[counter], counter - 1) */
-} 
+  }
+  //return false if reversed string complete and not palindrome
+   if (string.length === checkString.length && string.replace(/[\s]/g, '').toLowerCase()
+    !== checkString.replace(/[\s]/g, '').toLowerCase()) {
+    return false
+  }
+   checkString += string[index] 
+   //call recursively, decrementing index to create backwards string
+   return palindrome(string, checkString, index - 1) 
+}
 
 
 
@@ -397,8 +406,24 @@ var fibonacci = function(n) {
 // nthFibo(5); // 5
 // nthFibo(7); // 13
 // nthFibo(3); // 2
-var nthFibo = function(n) {
+
+var nthFibo = function(n, fib=0, fibTransit=0, fibHolder=1) {
+  //filter out negative n
+  if (n < 0) {
+    return null
+  } //hit base case when n decremented to 0
+  if (n === 0) {
+    return fib
+  } else { 
+  //Three parameter 'wheel' generates fibonacci number sequence
+  fibTransit = fib
+  fib += fibHolder
+  fibHolder = fibTransit
+  //Make recursive calls until base case reached
+  return nthFibo(n - 1, fib, fibTransit, fibHolder)
+  }
 };
+
 
 // 26. Given an array of words, return a new array containing each word capitalized.
 // var words = ['i', 'am', 'learning', 'recursion'];
