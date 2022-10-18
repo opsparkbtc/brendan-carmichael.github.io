@@ -4,55 +4,200 @@
 // denoted by n!, is the product of all positive integers less than or equal to n.
 // Example:  5! = 5 x 4 x 3 x 2 x 1 = 120
 // factorial(5);  // 120
-var factorial = function(n) {
+
+var factorial = function(n, fact = 1) {
+  //check for null
+  if (n < 0) {
+    return null
+  } else {
+  //base
+  if (n === 0){
+  return fact;
+  }
+  //recursion
+  fact *= n;
+  //return 
+  return factorial(n - 1, fact);
 };
+}
+
 
 // 2. Compute the sum of an array of integers.
 // Example:  sum([1, 2, 3, 4, 5, 6]);  // 21
-var sum = function(array) {
-};
+
+var sum = function(array, sumV=0) {
+  //check for 0 base case and return
+  if (array.length === 0) {
+    return sumV
+  //return and slice array down to get next value
+  } else {
+    sumV += array[0]
+    //make recursive call
+    return sum(array.slice(1), sumV)
+}
+}
+
 
 // 3. Sum all numbers in an array containing nested arrays.
 // Example: arraySum([1,[2,3],[[4]],5]); // 15
+
 var arraySum = function(array) {
 };
 
+
 // 4. Check if a number is even.
 var isEven = function(n) {
+  if (n >= -1) {
+  if (n === 0) {
+    return true
+  } else if (n === -1) {
+    return false
+  } else { 
+    return isEven(n - 2)
+  }
+  }
+  else if (n < -1) {
+  if (n === 0) {
+    return true
+  } else if (n === -1) {
+    return false
+  } else { 
+    return isEven(n + 2)
+  }
+  }
 };
+
 
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
-var sumBelow = function(n) {
-};
+
+var sumBelow = function(n, counter=0) {
+  //checks for positive number or zero
+  if (n >= 0) {
+  //base case hit when n is zero
+  if (n === 0) {
+  return counter
+} else {
+  //add sum to counter and decrement both variables to count
+  //all numbers between n and zero. End recrusion when n is zero. 
+  counter += (n - 1)
+    return sumBelow(n - 1, counter)
+}
+} //checks for negative number
+  else if (n < 0) 
+  //base case hit when n is zero
+  if (n === 0) {
+  return counter
+} else {
+  //add sum to counter and increment both variables to count
+  //all numbers between n and zero. End recrusion when n is zero. 
+  counter += (n + 1)
+    return sumBelow(n + 1, counter)
+  }
+}
+
 
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
-var range = function(x, y) {
-};
+
+var range = function(x, y, counter=[]) {
+  //if no integers in range, return empty array
+  if (x === y) {
+    return counter
+  }
+  //check to see if x is smaller
+  if (x < y) {
+  //base case reached when x been incremented to equal y minus 1
+  if (x === y - 1) {
+     return counter
+   } else {
+     //make recursive calls incrementing x
+     counter.push(x + 1)
+     return range(x + 1, y, counter)
+  }
+  //else defaults to y being smaller
+  } else {
+    //base case reached when x has been deccremented to equal y + 1
+    if (x - 1 === y) {
+     return counter
+   } else {
+     //make recursive calls decrementing x
+     counter.push(x - 1)
+     return range(x - 1, y, counter)
+  }
+}
+}
+
 
 // 7. Compute the exponent of a number.
 // The exponent of a number says how many times the base number is used as a factor.
 // 8^2 = 8 x 8 = 64.  Here, 8 is the base and 2 is the exponent.
 // Example:  exponent(4,3);  // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
-var exponent = function(base, exp) {
-};
+
+var exponent = function(base, exp, counter=base) {
+  //counter retains base's original value.
+  //base case is when exp has single level of exponentation.
+  if (exp > 0) {
+  if (exp === 1) {
+    return base
+  } else {
+    //exponentiate base, decrements exp and make recursive call
+    base = base * counter
+    return exponent(base, exp - 1, counter)
+  }
+} //implement case for negative exponent
+  else if (exp < 0) {
+  if (exp === -1) {
+    //alter to negative
+    return (1 / base)
+  } else {
+    //exponentiate base, incrementexp and make recursive call
+    base = base * counter
+    return exponent(base, exp + 1, counter)
+  }
+  
+  }
+  //catches the instance when exp is 0
+  else {
+    return 1
+}
+}
+
 
 // 8. Determine if a number is a power of two.
 // powerOfTwo(1); // true
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
+
 var powerOfTwo = function(n) {
+  //if dividing n by 2 reaches 1, n is a power of 2 and returns true
+  if (n === 1) {
+    return true
+  //if dividing by 2 overshoots 1, false is determined. The only number less than 2 that is a power of 2 would
+  //be the 1 caught by the previous if statement
+  } else if (n < 2) {
+    return false
+  } //make recursive calls to the function, dividing by two each time 
+  return powerOfTwo(n / 2)
 };
 
+
 // 9. Write a function that accepts a string a reverses it.
-var reverse = function(string) {
+var reverse = function(string, holder='', counter=string.length - 1) {
+  //base case is when holder is length of string, indicating reversal
+  if (holder.length === string.length) {
+    return holder
+  } else {
+    //add the index of the string to holder, then count down and recur
+    return reverse(string, holder + string[counter], counter - 1)
+  }
 };
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
+
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
