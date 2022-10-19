@@ -551,14 +551,32 @@ var minimizeZeroes = function(array, newArray=[]) {
 // their original sign.  The first number in the index always needs to be positive.
 // alternateSign([2,7,8,3,1,4]) // [2,-7,8,-3,1,-4]
 // alternateSign([-2,-7,8,3,-1,4]) // [2,-7,8,-3,1,-4]
-var alternateSign = function(array) {
-};
+
+var alternateSign = function(array, index=0) {
+  //set base case to index reaching length of array
+  if (array.length === index) {
+    return array
+} //if at odd index, multiply element by -1. NaN accounts for 0.
+  else if ((index % 2 !== 0) && (index % 2 !== NaN) && (array[index] > 0)) {
+    array[index] = (array[index] * -1)
+    //call function while incrementing index
+    return alternateSign(array, index + 1)
+} //if number at even or 0 index is negative, make it positive
+  if ((array[index] < 0) && (index % 2 ===0)) {
+    array[index] = (array[index] * -1)
+  }
+  //make recursive call
+  return alternateSign(array, index + 1)
+}
+
 
 // 35. Given a string, return a string with digits converted to their word equivalent.
 // Assume all numbers are single digits (less than 10).
 // numToText("I have 5 dogs and 6 ponies"); // "I have five dogs and six ponies"
+
 var numToText = function(str) {
 };
+
 
 // *** EXTRA CREDIT ***
 
