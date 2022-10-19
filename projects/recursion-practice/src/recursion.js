@@ -478,16 +478,47 @@ var flatten = function(arrays) {
 
 // 30. Given a string, return an object containing tallies of each letter.
 // letterTally('potato'); // {'p':1, 'o':2, 't':2, 'a':1}
-var letterTally = function(str, obj) {
+
+var letterTally = function(str, obj={}) {
+  //when string has been sliced to 0, return obj
+  if (str.length === 0) {
+  return obj
+} //if property already created, increment it
+  if (obj.hasOwnProperty(str[0])) {
+  obj[str[0]] += 1
+  //make recursive call, iterating through <str> via slice method
+  return letterTally(str.slice(1), obj)
+} else {
+  //create object property and set its value to 1
+  obj[str[0]] = 1
+  //make recursive call, iterating through <str> via slice method
+  return letterTally(str.slice(1), obj)
+}
 };
+
 
 // 31. Eliminate consecutive duplicates in a list.  If the list contains repeated
 // elements they should be replaced with a single copy of the element. The order of the
 // elements should not be changed.
 // Example: compress([1, 2, 2, 3, 4, 4, 5, 5, 5]) // [1, 2, 3, 4, 5]
 // Example: compress([1, 2, 2, 3, 4, 4, 2, 5, 5, 5, 4, 4]) // [1, 2, 3, 4, 2, 5, 4]
-var compress = function(list) {
-};
+
+var compress = function(list, newArray=[]) {
+  //when list sliced to 0, return compressed array
+  if (list.length === 0) {
+  return newArray
+} //if element at index 0 not the same as subsequent element, push it
+  //to newArray
+  else if  (list[0] !== list[1]) {
+  newArray.push(list[0])
+  //make recursive call with slice to evaluate next element of list
+  return compress(list.slice(1), newArray)
+} else {
+  //since element is the same as its subsequent element, skip it
+  return compress(list.slice(1), newArray)
+}
+}
+
 
 // 32. Augment every element in a list with a new value where each element is an array
 // itself.
@@ -498,8 +529,23 @@ var augmentElements = function(array, aug) {
 // 33. Reduce a series of zeroes to a single 0.
 // minimizeZeroes([2,0,0,0,1,4]) // [2,0,1,4]
 // minimizeZeroes([2,0,0,0,1,0,0,4]) // [2,0,1,0,4]
-var minimizeZeroes = function(array) {
-};
+
+var minimizeZeroes = function(array, newArray=[]) {
+  //when list sliced to 0, return minimized array
+  if (array.length === 0) {
+  return newArray
+} //if element is not a zero or is not the same as subsequent 
+  //element, push it to newArray
+  else if (array[0] !== 0 || array[0] !== array[1]) {
+  newArray.push(array[0])
+  //make recursive call with slice to evaluate next element of list
+  return minimizeZeroes(array.slice(1), newArray)
+} else {
+  //since zero element is the same as its subsequent element, skip it
+  return minimizeZeroes(array.slice(1), newArray)
+}
+}
+
 
 // 34. Alternate the numbers in an array between positive and negative regardless of
 // their original sign.  The first number in the index always needs to be positive.

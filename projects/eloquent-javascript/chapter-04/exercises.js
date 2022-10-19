@@ -101,7 +101,6 @@ function listToArray(list) {
   //initialize variable to hold modified array value
   let tempArray = list
   //begin while loop and push values
-  let counter = 0
   while (tempArray) {
     finalArray.push(tempArray.value)
     //reset value while looping for de facto iteration
