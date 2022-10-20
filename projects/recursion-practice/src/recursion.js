@@ -574,7 +574,28 @@ var alternateSign = function(array, index=0) {
 // Assume all numbers are single digits (less than 10).
 // numToText("I have 5 dogs and 6 ponies"); // "I have five dogs and six ponies"
 
-var numToText = function(str) {
+var numToText = function(str, array=[], index=0, obj={}) {
+  //create array for more precise element manipulation
+  if (index === 0) {
+    array = str.split('')
+    //create object with key/value pairs that will enable switching
+    obj = {'1': 'one', '2': 'two', '3': 'three', '4': 'four', '5': 'five', 
+           '6': 'six', '7': 'seven', '8': 'eight', '9': 'nine'
+          }
+} //create base case of index reaching <str> length.
+  if (index === str.length) {
+  //output a string created from joined array
+  return array.join('')
+} //check object for property and splice in its value
+  if (obj.hasOwnProperty(array[index])) {
+    array.splice([index], 1, obj[array[index]])
+    //call function while incrementing index   
+    return numToText(str, array, index + 1, obj)
+  } 
+  //if not 1-9, call function and increment index
+  else {
+  return numToText(str, array, index + 1, obj)
+  }
 };
 
 
