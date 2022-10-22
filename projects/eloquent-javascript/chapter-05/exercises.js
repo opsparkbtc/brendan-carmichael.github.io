@@ -72,9 +72,6 @@ return true
 // /////////////////////////////////////////////////////////////////////////////
 
 
-
-function dominantDirection() {
-
   //declare pre-made countBy function provided earlier in the chapter
   function countBy(items, groupName) {
     //open holding array
@@ -92,21 +89,39 @@ function dominantDirection() {
       }
     }
     return counts;
-  } //declare pre-made characterScript function provided earlier in the //chapter
-  let charScript = function characterScript(code) {
-    //loop through script
+  } 
+  
+  //declare pre-made characterScript function provided earlier in the chapter
+  function charScript(code) {
+    //loop through script. Use the SCRIPTS object provided 
     for (let script of SCRIPTS) {
       //determine what script the code belongs to and return script
-      if (script.ranges.some(([from, to]) => code >= from &&
-                                             code < to)) {
-        return script;
+  if (script.ranges.some(([from, to]) => { return code >= from && code < to})) {
+       return script;
       }
     }
     return null;
   }
   
-    
+  function dominantDirection(inputString) {
+    //call provided functions
+    let scripts = countBy(inputString, char => { 
+      let script = charScript(char.charCodeAt(0));
+      //return script direction
+      if (script) {
+        return script.direction 
+      } 
+   })
+    //use length property to make determination
+    if (scripts.length === 0) { 
+      return 'ltr';
+  } else {
+    //reduce to get return value, similar to the stair counting problem
+    return scripts.reduce((first, second) => ((first.count) > (second.count)) ? first:second).name
   }
+  }
+
+
 
 // /////////////////////////////////////////////////////////////////////////////
 //  //////////////////////////////////////////////////////
