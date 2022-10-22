@@ -1,4 +1,4 @@
-/** String Manipulation:
+/** STRING MANIPULATION:
  * 
  * 0. Strings are data types in Javascript consisting of alphanumeric characters places together. We have various methods
  * with which to alter them, which will be listed and explained below.

@@ -1,4 +1,4 @@
-/** Operators:
+/** OPERATORS:
  * 
  * 0. Operators are symbols which we can use to perform actions on pieces of data called operands, which themselves are either 
  * variables or values. Operator use is a crucial fundamental aspect of Javascript.
