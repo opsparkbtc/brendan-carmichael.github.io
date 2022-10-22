@@ -16,7 +16,7 @@ let x = 0
 
 //Next we execute the subsequent code block until the while loop's condition is no longer true. The while loop
 //will exist after 10 executions, as x will no longer be less than 10.
-while (let x = 0 < 10) {
+while (x < 10) {
    x += 1
 }
 
