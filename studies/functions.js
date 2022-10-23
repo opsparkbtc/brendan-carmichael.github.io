@@ -72,16 +72,20 @@ function testFunction(number) {
 
 //6. Closure
 //
-//A closure allows an inner block of code to maintain an assigned value within a function even after its parent has been
-//closed. An example below:
+//A closure is a functon that is 'enclosed' by its surrounding state while referencing that state. Below, the anonymous 
+//function that multiplies x by y is an example of closure. After multiplier is called, it will retain x's value, even
+// after its parent scope has closed.
 
-function adder(x, y) {
+
+function multiplier(x) {
     return function(y) {
-        return y + 5
+        return x * y
     }
 }
 
-let superAdder = adder(5)
+let superMultiplier = multiplier(5) //multiplier 'holds on' to x, which has been assigned the value of 5
+
+console.log(superMultiplier(2)) //console logs 10. The 2 is multiplied by the retained value of 5.
 
 
 
