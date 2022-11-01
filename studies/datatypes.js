@@ -52,7 +52,7 @@ let secondExampleObject = {
                             secondkey: 'triangle',
                             thirdkey: 'circle',
                            },
-                           fourthkey: () => {console.log('This object has too much stuff in it')};
+                           fourthkey: () => {console.log('This object has too much stuff in it')}
               
 }
 

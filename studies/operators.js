@@ -15,11 +15,39 @@
 
 let exampleVariable = 10
 
+//we reassign using the assignment operator:
+exampleVariable = 200
+exampleVariable = 600
+
+//below, the console will log 600 as we have assigned this value to exampleVariable
+console.log(exampleVariable)
+
 // +=, -=, *=, /=, %=, **= :  These six  both perform arithmetic operations and assign a value
 //
-//Below, our exampleVariable will now equal 12:
+//Below, exampleVariable2 will be incremented to 10:
 
-exampleVariable += 2
+// += addition
+let exampleVariable2 = 0
+exampleVariable2 += 10
+console.log(exampleVariable2) //logs 15 to the console
+
+// -= subtraction
+exampleVariable2 -= 5
+console.log(exampleVariable2) //logs 10 to the console
+
+// *= multiplication
+exampleVariable2 *= 4
+console.log(exampleVariable2) //logs 40 to the console
+
+// /= division
+exampleVariable2 /= 8
+console.log(exampleVariable2) //logs 5 to the console
+
+// **= exponentiation
+exampleVariable2 **=2
+console.log(exampleVariable2) //logs 25 to the console
+
+
 
 // ‘X=’ is the formula, with X being the arithmetic operator to be performed along with the assignment.
 
@@ -35,24 +63,70 @@ exampleVariable += 2
 // ‘- -’ Decrement
 // ** Exponentiation
 
-//Below, the arithmetic operator adds two values:
-(2 + 2) 
+//Addition:
+console.log(2 + 2) //console logs 4
+
+//Subtraction:
+console.log(10 - 5) //console logs 5
+
+//Multiplication:
+console.log(10 * 10) //console logs 100
+
+//Division
+console.log(100 / 4) //console logs 25
+
+//% Remainder/Modulo
+console.log(10 % 3) //console logs 1
+
+//increment
+let x = 10
+x++
+console.log(x) //console logs 11
+
+//decrement
+let y = 50
+y--
+console.log(y) //console logs 49
+
+//exponentiation
+console.log(3 ** 3) //console logs 27
+
 
 //3.0 Comparison Operators 
 //These are used to compare data. They return true or false!
 //
 // >  Greater Than                                               
 // >= Greater Than or Equal To
-// <   Less Than                                                  
+// <  Less Than                                                  
 // <= Less Than or Equal To
 // == Equals, which compares value across data types
 // === Strictly Equals which compares value accounting strictly for data type
 // != Not Equal
 // !==Not Strictly Equal
 
+// >
 console.log(10 > 2) //prints true
-console.log(10 < 10) //printsfalse
+
+// >=
+console.log(3 >= 3) //prints true
+
+// <
+console.log(10 < 10) //prints false
+
+// <=
 console.log(10 <= 10) //prints true
+
+// ==
+console.log(5 == '5') //prints true
+
+// ====
+console.log(5 === '5') //prints false
+
+// !=
+console.log('6' != 6) //prints false
+
+// !==
+console.log('88' !== 88) //prints true
 
 //4.0 Logical Operators
 //These evaluate to True or False, and help us make more complex expressions.
@@ -66,6 +140,15 @@ console.log((10000 > 1) && (2 > 3))
 
 console.log((2000 < 2) || (7 === (14 / 2) ))
 //prints true, as either statement can be true. The first expression evaluates to false, but the other evaluates to true.
+
+let bangVar = 5
+
+//Below, the bang operator indicates that if "not" bangVar = 5, print a statement. As bangVar equals 5, nothing is printed.
+if (!bangVar === 5) {
+    console.log('x does not deeply equal 5!')
+}
+
+
 
 
 //5.0 Unary Operators

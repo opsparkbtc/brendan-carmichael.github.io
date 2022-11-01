@@ -47,13 +47,13 @@ else if ((100 < 1) === false) {
 let x = 100
 
 //condition not met...
-if x < 100 {
+if (x < 100) {
     console.log('x is less than 100')
 }
 
 //condition still not met...
-else if x > 100{
-    console.log('x is greater than 100'')
+else if (x > 100){
+    console.log('x is greater than 100')
 }
 
 //else statement executes
@@ -70,17 +70,17 @@ else {
 //
 //Here, we pass the switch statement a variable. Then we subject it to an evaluation. Output is determined by cases.
 
-let x = false
+let y = false
 
-switch (x) {
+switch (y) {
     default:
-        output = 'x is not a boolean value'
+        output = 'y is not a boolean value'
         break
     case true:
-        output = 'x is true'
+        output = 'y is true'
         break
   case false:
-        output = 'x is false'
+        output = 'y is false'
         break
 }
 

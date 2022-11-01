@@ -23,13 +23,13 @@ printDogType('Poodle')
 
 //3. We can declare a function one of three ways. The first is with the previously used method. The second is with a variable:
 
-let printDogType = function(dogType) {
+let anotherPrintDogType = function(dogType) {
     console.log(`One really cool type of dog is the ${dogType}.`)
 }
 
 //We can also use the more efficient arrow notation, in which the 'function' word is implicit
 
-let printDogType = (dogType) => console.log(`One really cool type of dog is the ${dogType}.`)
+let arrowPrintDogType = (dogType) => console.log(`One really cool type of dog is the ${dogType}.`)
 
 //4. Option parameters
 //

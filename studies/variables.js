@@ -46,7 +46,7 @@ for (i = 0; i <= 10; i++) {
     exampleLet += i
     console.log(exampleLet)  //this logs 0-10 as the for loop adds to exampleLet
 }
-console.log(exampleLet) //this throws an error because let variables are block scoped.
+//console.log(exampleLet) //if not commented out, this throws an error because let variables are block scoped.
 
 //If we just change 'let' to 'var', the second console.log would log 10! Let allows us to be more precise with our code.
 
@@ -56,18 +56,24 @@ let exampleLet = 0
 exampleLet = 1 //We can reassign exampleLet without issue
 
 const exampleConst = 'Not gonna change!'
-exampleConst = 'Change!' //This gives us an error
+//exampleConst = 'Change!' //This gives us an error if not commented out
 
 //3.0 Hoisting
 //Hoisting is a process where parts of our code are brought to the top of their scope before other pieces of code, even if
 //they appear later in our code. 'Var' variables are hoisted with their initializations but not their assignments. 'Let' and
 // 'Const' are hoisted but not initialized.
+
+/* Note: This section will be commented out so as not to throw errors which will prevent submission
+
+
 console.log(varHoistExample) //console prints 'undefined', as var is declared but not assigned.
 console.log(letHoistExample) //error!
 console.log(constHoistExample) //also error!
 var varHoistExample = 'This is the first example'
 let letHoistExample = "This is another example"
 let constHoistExample = "this is an example too"
+
+*/
 
 //Thank you, you've been a beautiful audience.
 
