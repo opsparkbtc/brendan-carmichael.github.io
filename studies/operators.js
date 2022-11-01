@@ -22,13 +22,13 @@ exampleVariable = 600
 //below, the console will log 600 as we have assigned this value to exampleVariable
 console.log(exampleVariable)
 
-// +=, -=, *=, /=, %=, **= :  These six  both perform arithmetic operations and assign a value
+// +=, -=, *=, /=, **= :  These six  both perform arithmetic operations and assign a value
 //
 //Below, exampleVariable2 will be incremented to 10:
 
 // += addition
 let exampleVariable2 = 0
-exampleVariable2 += 10
+exampleVariable2 += 15
 console.log(exampleVariable2) //logs 15 to the console
 
 // -= subtraction
@@ -46,8 +46,6 @@ console.log(exampleVariable2) //logs 5 to the console
 // **= exponentiation
 exampleVariable2 **=2
 console.log(exampleVariable2) //logs 25 to the console
-
-
 
 // ‘X=’ is the formula, with X being the arithmetic operator to be performed along with the assignment.
 
