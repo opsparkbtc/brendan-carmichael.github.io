@@ -170,10 +170,10 @@ console.log(typeof 99) //returns 'number'
 //
 //These convert their operands to positive or negative numbers.
 
-let x = '5'
-console.log(x) //prints the string '5'
-console.log(+x) //prints the number (not the string) 5.
-console.log(-x) //prints the number -5
+let unaryExample = '5'
+console.log(unaryExample) //prints the string '5'
+console.log(+unaryExample) //prints the number (not the string) 5.
+console.log(-unaryExample) //prints the number -5
 
 //The decrement (--) and increment (++) operators, found often in our for loops, are also unary operators.
 
